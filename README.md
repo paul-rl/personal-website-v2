@@ -1,3 +1,6 @@
+This is the second version of my personal website, using Next.js 15 and Tailwind CSS to highlight my experience and technical work.
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
