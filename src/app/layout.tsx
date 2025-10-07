@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`bg-background`}>
+    <html lang="en" className={`${cinzel.variable} ${roboto.variable} bg-background`}>
       <body className="min-h-screen">
         {/* Two-pane layout, right can change via {children} */}
         <div className="grid grid-cols-1 md:grid-cols-[340px_1fr] min-h-screen md:h-screen">
