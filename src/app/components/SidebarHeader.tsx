@@ -1,18 +1,20 @@
 import Image from "next/image";
 
 type Props = {
+  className: string
   name?: string;
   subtitle?: string;
   avatarSrc?: string;
 };
 
 export default function SidebarHeader({
+  className,
   name = "Gian Paul Ramirez",
   subtitle = "THE DEVELOPER OF SOFTWARE",
   avatarSrc = "/images/header.png",
 }: Props) {
   return (
-    <div className="flex items-start gap-2">
+    <div className={`flex items-start gap-2 ${className}`}>
       {/* Avatar */}
       <div className="shrink-0 p-1">
         <Image

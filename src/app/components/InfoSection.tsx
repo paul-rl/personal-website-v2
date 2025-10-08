@@ -21,7 +21,7 @@ export default function InfoSection({
 }: InfoSectionProps) {
   return (
     <section
-      className={`flex items-center mt-[4rem] gap-[5rem] select-none ${className}`}
+      className={`flex items-center gap-[5rem] select-none ${className}`}
     >
       {/* Left: Info Stack */}
       <div className="flex-1 space-y-4 min-w-[10rem]">
