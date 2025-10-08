@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #010A13;
+  --background: #020e1b;
   --cream: #E3DCCA;
   --golden: #C2AA76;
   --light-blue: #1398AC;
+  --dark-blue: #08222B;
   --button-inside: #1E2327;
   --body-text: #8E938D;
+  --subhead: #A3998F;
   
 }
 
@@ -15,8 +17,10 @@
   --color-cream: var(--cream);
   --color-golden: var(--golden);
   --color-light-blue: var(--light-blue);
-  --color-button: var(--button-inside);
+  --color-dark-blue: var(--dark-blue);
+  --color-subhead: var(--subhead);
   --color-body: var(--body-text);
+  --color-button: var(--button-inside);
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
