@@ -20,43 +20,41 @@ export default function InfoSection({
   className = "",
 }: InfoSectionProps) {
   return (
-    <section
-      className={`flex items-center gap-[5rem] select-none ${className}`}
-    >
+    <section className={`flex items-center gap-[5rem] select-none ${className}`}>
       {/* Left: Info Stack */}
-      <div className="flex-1 space-y-4 min-w-[10rem]">
-        {/* Focus */}
+      <div className="min-w-[10rem] flex-1 space-y-4">
+        {/* FOCUS */}
         <div>
-          <div className="font-serif font-bold text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
+          <div className="font-serif font-bold text-subhead text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
             FOCUS:
           </div>
-          <div className="font-sans text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-cream">
+          <div className="font-sans text-cream text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
             {focus}
           </div>
         </div>
 
-        {/* Approach */}
+        {/* APPROACH */}
         <div>
-          <div className="font-serif font-bold text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
+          <div className="font-serif font-bold text-subhead text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
             APPROACH:
           </div>
           <StyleSlider position={percent} />
         </div>
 
-        {/* Mastery */}
+        {/* MASTERY */}
         <div>
-          <div className="font-serif font-bold text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
+          <div className="font-serif font-bold text-subhead text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
             MASTERY:
           </div>
           <MasteryBar value={mastery} />
         </div>
       </div>
 
-      {/* Right: Circle (placeholder for radar) */}
+      {/* Right: Circle placeholder */}
       <div className="relative w-[clamp(160px,38vw,320px)] aspect-square">
         <svg
           viewBox="0 0 100 100"
-          className="absolute inset-0 h-full w-full"
+          className="absolute inset-0 w-full h-full"
           preserveAspectRatio="xMidYMid meet"
         >
           <circle
@@ -76,14 +74,13 @@ export default function InfoSection({
 
 function StyleSlider({ position }: { position: number }) {
   const p = Math.max(0, Math.min(1, position));
-
   return (
     <div className="flex items-center gap-[.5rem] pointer-events-none select-none">
       <ComputerIcon className="w-[2rem] h-[2rem] text-cream" />
 
       {/* Flexible track fills remaining space */}
       <div className="relative flex-1">
-        <div className="h-[3px] w-full bg-cream relative">
+        <div className="relative w-full h-[3px] bg-cream">
           {/* side padding equals knob radius (8px) */}
           <div className="absolute inset-0 px-2">
             <div
@@ -117,20 +114,16 @@ function MasteryBar({
 }: MasteryProps) {
   return (
     <div className="space-y-2">
-      <div
-        className="flex items-center gap-2"
-        aria-label={`Mastery: ${value} of ${total}`}
-      >
+      <div className="flex items-center gap-2" aria-label={`Mastery: ${value} of ${total}`}>
         {Array.from({ length: total }).map((_, i) => {
           const on = i < value;
           return (
             <div
               key={i}
               className={[
-                "h-[5px] ring-1 ring-[var(--color-dark-blue)]",
-                on
-                  ? "bg-[var(--color-light-blue)]"
-                  : "bg-[var(--color-dark-blue)]",
+                "h-[5px]",
+                on ? "bg-[var(--color-light-blue)]" : "bg-[var(--color-dark-blue)]",
+                "ring-1 ring-[var(--color-dark-blue)]",
               ].join(" ")}
               style={{ width: `${segmentWidthRem}rem` }}
             />
@@ -158,14 +151,14 @@ function PaletteIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={className}
     >
-      <path d="M15.5 8.5H15.51M10.5 7.5H10.51M7.5 11.5H7.51M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 13.6569 19.6569 15 18 15H17.4C17.0284 15 16.8426 15 16.6871 15.0246C15.8313 15.1602 15.1602 15.8313 15.0246 16.6871C15 16.8426 15 17.0284 15 17.4V18C15 19.6569 13.6569 21 12 21ZM16 8.5C16 8.77614 15.7761 9 15.5 9C15.2239 9 15 8.77614 15 8.5C15 8.22386 15.2239 8 15.5 8C15.7761 8 16 8.22386 16 8.5ZM11 7.5C11 7.77614 10.7761 8 10.5 8C10.2239 8 10 7.77614 10 7.5C10 7.22386 10.2239 7 10.5 7C10.7761 7 11 7.22386 11 7.5ZM8 11.5C8 11.7761 7.77614 12 7.5 12C7.22386 12 7 11.7761 7 11.5C7 11.2239 7.22386 11 7.5 11C7.77614 11 8 11.2239 8 11.5Z" />
+      <path d="M15.5 8.5H15.51M10.5 7.5H10.51M7.5 11.5H7.51M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 13.6569 19.6569 15 18 15H17.4C17.0284 15 16.8426 15 16.6871 15.0246C15.8313 15.1602 15.1602 15.8313 15.0246 16.6871C15 16.8426 15 17.0284 15 17.4V18C15 19.6569 13.6569 21 12 21ZM16 8.5C16 8.77614 15.7761 9 15.5 9C15.2239 9 15 8.77614 15 8.5C15 8.22386 15.2239 8 15.5 8ZM11 7.5C11 7.77614 10.7761 8 10.5 8C10.2239 8 10 7.77614 10 7.5C10 7.22386 10.2239 7 10.5 7C10.7761 7 11 7.22386 11 7.5ZM8 11.5C8 11.7761 7.77614 12 7.5 12C7.22386 12 7 11.7761 7 11.5C7 11.2239 7.22386 11 7.5 11C7.77614 11 8 11.2239 8 11.5Z" />
     </svg>
   );
 }

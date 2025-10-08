@@ -28,15 +28,17 @@ export default function RootLayout({
     <html lang="en" className={`${cinzel.variable} ${roboto.variable} bg-background`}>
       <body className="min-h-screen">
         {/* Two-pane layout, right can change via {children} */}
-        <div
-          className="
+        <div className="
             grid grid-cols-1
             md:grid-cols-[clamp(280px,34vw,520px)_1fr]
             min-h-screen md:h-screen
-          "
-        >
+          ">
           {/* LEFT: sticky, doesn't move based on RIGHT's scroll */}
-          <aside className="min-w-0 md:border-b-0 md:border-r border-golden/20 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
+          <aside className="
+              md:sticky md:top-0
+              min-w-0 md:h-screen md:overflow-y-auto
+              md:border-r md:border-b-0 border-golden/20
+            ">
             <Sidebar />
           </aside>
 
