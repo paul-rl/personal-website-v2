@@ -1,5 +1,5 @@
-// components/InfoSection.tsx
 import React from "react";
+import DiscreteRadar from "./DiscreteRadar";
 
 type InfoSectionProps = {
   focus?: string;
@@ -24,7 +24,7 @@ export default function InfoSection({
 }: InfoSectionProps) {
   return (
     <section
-      className={`flex items-start gap-6 select-none ${className}`}
+      className={`flex items-center mt-[4rem] gap-6 select-none ${className}`}
     >
       {/* Left: Info Stack */}
       <div className="flex-1 space-y-4 min-w-[10rem]">
@@ -56,19 +56,13 @@ export default function InfoSection({
             <MasteryBar value={mastery}/>
         </div>
       </div>
-      <div className="flex-1 space-y-4 min-w-[10rem]">
-        {/* Focus */}
-        <div>
-            <div className="font-serif font-bold 
-                            text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
-                FOCUS:
-            </div>
-            <div className="font-sans 
-                            text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-cream">
-            {focus}
-            </div>
-        </div>
-      </div>
+      {/* Right: Radar Graph */}
+      <div>
+      <svg width="320" height="320" viewBox="0 0 320 320" aria-label="circle">
+  <circle cx="160" cy="160" r="159" fill="var(--background)" stroke="var(--dark-blue)" strokeWidth="2" />
+</svg>
+
+    </div>
       
     </section>
   );
