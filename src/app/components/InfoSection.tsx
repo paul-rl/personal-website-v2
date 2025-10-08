@@ -1,5 +1,4 @@
 import React from "react";
-import DiscreteRadar from "./DiscreteRadar";
 
 type InfoSectionProps = {
   focus?: string;
