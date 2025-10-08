@@ -87,7 +87,7 @@ function StyleSlider({ position }: { position: number }) {
               className="
                 absolute top-1/2 size-4
                 -translate-y-1/2 -translate-x-1/2
-                rounded-full bg-blue-500
+                rounded-full bg-light-blue
                 ring-1 ring-[var(--color-dark-blue)] ring-offset-0
               "
               style={{ left: `${p * 100}%` }}
