@@ -1,9 +1,7 @@
-import React from "react";
-
 type InfoSectionProps = {
   focus?: string;
   percent?: number; // 0..1
-  mastery?: number; // 0..1
+  mastery?: number; // 0..total
   radar?: {
     labels?: [string, string, string, string, string];
     values: [number, number, number, number, number];
@@ -23,98 +21,142 @@ export default function InfoSection({
 }: InfoSectionProps) {
   return (
     <section
-      className={`flex items-center mt-[4rem] gap-6 select-none ${className}`}
+      className={`flex items-center mt-[4rem] gap-[5rem] select-none ${className}`}
     >
       {/* Left: Info Stack */}
       <div className="flex-1 space-y-4 min-w-[10rem]">
         {/* Focus */}
         <div>
-            <div className="font-serif font-bold 
-                            text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
-                FOCUS:
-            </div>
-            <div className="font-sans 
-                            text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-cream">
-                                {focus}
-            </div>
+          <div className="font-serif font-bold text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
+            FOCUS:
+          </div>
+          <div className="font-sans text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-cream">
+            {focus}
+          </div>
         </div>
+
         {/* Approach */}
         <div>
-            <div className="font-serif font-bold 
-                            text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
-                APPROACH:
-            </div>
-            <StyleSliderStatic position={percent}/>
+          <div className="font-serif font-bold text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
+            APPROACH:
+          </div>
+          <StyleSlider position={percent} />
         </div>
+
         {/* Mastery */}
         <div>
-            <div className="font-serif font-bold 
-                            text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
-                MASTERY:
-            </div>
-            <MasteryBar value={mastery}/>
+          <div className="font-serif font-bold text-[clamp(1rem,1vw+0.5rem,1.38rem)] text-subhead">
+            MASTERY:
+          </div>
+          <MasteryBar value={mastery} />
         </div>
       </div>
-      {/* Right: Radar Graph */}
-      <div>
-      <svg width="320" height="320" viewBox="0 0 320 320" aria-label="circle">
-  <circle cx="160" cy="160" r="159" fill="var(--background)" stroke="var(--dark-blue)" strokeWidth="2" />
-</svg>
 
-    </div>
-      
+      {/* Right: Circle (placeholder for radar) */}
+      <div className="relative w-[clamp(160px,38vw,320px)] aspect-square">
+        <svg
+          viewBox="0 0 100 100"
+          className="absolute inset-0 h-full w-full"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <circle
+            cx="50"
+            cy="50"
+            r="48"
+            fill="none"
+            className="stroke-white"
+            strokeWidth={2}
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
 
-function StyleSliderStatic({ position }: { position: number }) {
+function StyleSlider({ position }: { position: number }) {
   const p = Math.max(0, Math.min(1, position));
 
   return (
-    <div className="flex items-center gap-6 pointer-events-none select-none">
-      
-      <ComputerIcon className="w-6 h-6 text-cream"/>
+    <div className="flex items-center gap-[.5rem] pointer-events-none select-none">
+      <ComputerIcon className="w-[2rem] h-[2rem] text-cream" />
+
+      {/* Flexible track fills remaining space */}
       <div className="relative flex-1">
-        <div className="h-[3px] w-full bg-cream">
-            {/* a positioning layer with side padding = knob radius (8px) */}
-            <div className="absolute inset-0 px-2">
-              <div
-                className="
-                  absolute top-1/2 size-4
-                  -translate-y-1/2 -translate-x-1/2
-                  rounded-full bg-blue-500
-                  ring-1 ring-[var(--color-dark-blue)] ring-offset-0"
-                style={{ left: `${p*100}%` }}
-              />
-            </div>
-        </div> 
+        <div className="h-[3px] w-full bg-cream relative">
+          {/* side padding equals knob radius (8px) */}
+          <div className="absolute inset-0 px-2">
+            <div
+              className="
+                absolute top-1/2 size-4
+                -translate-y-1/2 -translate-x-1/2
+                rounded-full bg-blue-500
+                ring-1 ring-[var(--color-dark-blue)] ring-offset-0
+              "
+              style={{ left: `${p * 100}%` }}
+            />
+          </div>
+        </div>
       </div>
-      <PaletteIcon className="w-6 h-6 text-cream"/>
+
+      <PaletteIcon className="w-[2rem] h-[2rem] text-cream" />
     </div>
   );
+}
 
-function ComputerIcon({
-    className = "w-6 h-6",
-}: {
-    className?: string;
-}) {
+type MasteryProps = {
+  value: number;              // 0..total
+  total?: number;             // default 3
+  segmentWidthRem?: number;   // width of each pill (rem), default 4
+};
+
+function MasteryBar({
+  value,
+  total = 3,
+  segmentWidthRem = 4,
+}: MasteryProps) {
+  return (
+    <div className="space-y-2">
+      <div
+        className="flex items-center gap-2"
+        aria-label={`Mastery: ${value} of ${total}`}
+      >
+        {Array.from({ length: total }).map((_, i) => {
+          const on = i < value;
+          return (
+            <div
+              key={i}
+              className={[
+                "h-[5px] ring-1 ring-[var(--color-dark-blue)]",
+                on
+                  ? "bg-[var(--color-light-blue)]"
+                  : "bg-[var(--color-dark-blue)]",
+              ].join(" ")}
+              style={{ width: `${segmentWidthRem}rem` }}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* Icons */
+function ComputerIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-      <path fillRule="evenodd" clipRule="evenodd"
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M2 6C2 4.34315 3.34315 3 5 3H19C20.6569 3 22 4.34315 22 6V15C22 16.6569 20.6569 18 19 18H13V19H15C15.5523 19 16 19.4477 16 20C16 20.5523 15.5523 21 15 21H9C8.44772 21 8 20.5523 8 20C8 19.4477 8.44772 19 9 19H11V18H5C3.34315 18 2 16.6569 2 15V6ZM5 5C4.44772 5 4 5.44772 4 6V15C4 15.5523 4.44772 16 5 16H19C19.5523 16 20 15.5523 20 15V6C20 5.44772 19.5523 5 19 5H5Z"
       />
     </svg>
   );
 }
 
-function PaletteIcon({
-  className = "w-6 h-6",
-}: {
-  className?: string;
-}) {
+function PaletteIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -127,42 +169,3 @@ function PaletteIcon({
     </svg>
   );
 }
-
-
-
-
-}
-
-type MasteryProps = {
-  value: number;          // 0..total
-  total?: number;         // default 3
-  segmentWidthRem?: number; // width of each pill (in rem), default 6
-};
-
-function MasteryBar({
-  value,
-  total = 3,
-  segmentWidthRem = 4,
-}: MasteryProps) {
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center gap-2" aria-label={`Mastery: ${value} of ${total}`}>
-        {Array.from({ length: total }).map((_, i) => {
-          const on = i < value;
-          return (
-            <div
-              key={i}
-              className={[
-                "h-[5px]  ring-1 ring-[var(--color-dark-blue)]",
-                on
-                  ? "bg-[var(--color-light-blue)]"
-                  : "bg-[var(--color-dark-blue)]",
-              ].join(" ")}
-              style={{ width: `${segmentWidthRem}rem` }}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
-};
