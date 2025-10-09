@@ -6,7 +6,7 @@ export default function HeaderTabs({className} : {className: string}) {
   const [active, setActive] = useState<"projects" | "about">("projects");
 
   return (
-    <div className={`flex gap-8 bg-dark-blue px-8 py-3 font-serif text-lg ${className}`}>
+    <div className={`flex gap-8 px-8 py-3 font-serif text-lg ${className}`}>
       <button
         onClick={() => setActive("projects")}
         className={`uppercase tracking-wide transition-colors ${
