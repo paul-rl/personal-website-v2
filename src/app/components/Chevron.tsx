@@ -12,7 +12,7 @@ type Props = {
 
 export default function Chevron({
   size = 72,
-  stroke = 22,
+  stroke = 25,
   innerStroke = 14,
   className = "",
   ariaLabel = "Chevron",
