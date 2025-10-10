@@ -64,7 +64,7 @@ export default function Carousel<T>({
       {/* Full-width (relative) dividers spanning 90% of the parent width */}
         <div className="pointer-events-none 
                         absolute left-[10%] right-[10%] top-0 
-                        translate-y-[1rem]"
+                        translate-y-[1.2rem]"
         >
             <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-[4rem]">
                 <div className="h-[.5px] bg-golden" />
