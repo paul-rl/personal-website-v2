@@ -16,34 +16,30 @@ export default function ProjectsCarousel({ className }: Props) {
   return (
     <Carousel
       items={slides}
-      className={className ?? "w-full max-w-[860px]"}
+      className={className ?? "w-full max-w-[min(94vw,1200px)] mx-auto"}
       initialIndex={0}
       render={(src, isActive) => (
         <figure
-  className={
-    isActive
-      ? "relative overflow-hidden border-[3px] border-[var(--golden)] bg-[var(--button-inside)]"
-      : "relative overflow-hidden border-2 bg-[var(--button-inside)]"
-  }
-  style={{
-    borderColor: isActive ? "var(--golden)" : "var(--body-text)",
-    width: isActive ? 240 : 200,
-    height: isActive ? 150 : 120,
-  }}
->
-  {/* optional: a little inner padding helps with odd aspect ratios */}
-  <div className="absolute inset-0 p-2">
-    <Image
-      src={src}
-      alt=""
-      fill
-     className="object-cover"
-      sizes="(min-width: 1024px) 240px, 50vw"
-      unoptimized={src.endsWith(".gif")}
-      priority
-    />
-  </div>
-</figure>
+          className={[
+            "relative overflow-hidden bg-[var(--button-inside)] aspect-[16/9]",
+            isActive ? "border-[3px] border-[var(--golden)]" : "border-[3px] border-[var(--body-text)]",
+          ].join(" ")}
+          // width/height are set by the carousel via CSS variables
+          style={{
+            width: isActive ? "var(--wA)" : "var(--wS)",
+            height: "auto",
+          }}
+        >
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(min-width: 1280px) 40vw, (min-width: 768px) 60vw, 90vw"
+            unoptimized={src.endsWith(".gif")}
+            priority
+          />
+        </figure>
       )}
     />
   );
