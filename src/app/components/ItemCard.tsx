@@ -18,32 +18,44 @@ export default function ItemCard({
   imageAlt = "",
 }: ItemCardProps) {
   return (
-    <article className="mx-auto w-full max-w-[680px] font-sans text-center">
-      {/* Framed image */}
-      <div className="relative mx-4 border-2 border-golden">
-        <div className="relative aspect-video w-full">
+    <article
+      className={`mx-auto w-full font-sans text-center ${className}`}
+      style={{ maxWidth: "clamp(280px, 90vw, 680px)", padding: "0 clamp(0.5rem, 2vw, 2rem)" }}
+    >
+      {/* Container to bound image + text */}
+      <div>
+        {/* Image with responsive width */}
+        <div className="relative mx-auto border-5 border-golden" 
+          style={{ width: "100%", maxWidth: "100%" }}
+        >
           <Image
-            src="/images/projects/groundbreak.gif" // keeping as-is per your code
-            alt="Groundbreak gameplay"
+            src={imageSrc}
+            alt={imageAlt || "Project image"}
             unoptimized
             width={800}
             height={450}
-            className="block h-auto w-full"
-            sizes="(min-width: 768px) 680px, 100vw"
+            className="block w-full h-auto"
+            sizes="(min-width:768px) 680px, 100vw"
             priority
           />
         </div>
+
+        {/* Title */}
+        <h3
+          className="mt-[clamp(0.5rem,2vw,1.2rem)] italic leading-tight text-cream"
+          style={{ fontSize: "clamp(1.5rem,2.2vw + 1rem,2.25rem)", textAlign: "center", maxWidth: "100%" }}
+        >
+          {title}
+        </h3>
+
+        {/* Paragraph */}
+        <p
+          className="mt-[clamp(0.3rem,1vw,0.8rem)] text-body text-left"
+          style={{lineHeight: 1.6, maxWidth: "100%", margin: "0 auto" }}
+        >
+          {description}
+        </p>
       </div>
-
-      {/* Title */}
-      <h3 className="mt-4 text-[clamp(1.5rem,2.2vw+1rem,2.25rem)] italic leading-tight text-cream">
-        {title}
-      </h3>
-
-      {/* Paragraph */}
-      <p className="mx-4 mt-2 text-left text-body">
-        {description}
-      </p>
     </article>
   );
 }
