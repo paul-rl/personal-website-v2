@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Cinzel, Roboto } from "next/font/google";
 import "./globals.css";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "@/app/components/Sidebar";
+import { loadSiteData } from "@/app/lib/siteData";
+import { SiteDataProvider } from "@/app/components/SiteDataContext";
 
 const roboto = Roboto({
   variable: "--font-sans",

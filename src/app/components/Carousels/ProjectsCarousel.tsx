@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Carousel from "./Carousel";
+import Carousel from "@/app/components/carousels/Carousel";
 
 type Props = { className?: string };
 

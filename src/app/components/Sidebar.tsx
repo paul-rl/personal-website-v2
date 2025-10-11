@@ -1,6 +1,6 @@
-import SidebarHeader from "./SidebarHeader";
-import InfoSection from "./InfoSection";
-import ButtonCollection from "./ButtonCollection";
+import SidebarHeader from "@/app/components/SidebarHeader";
+import InfoSection from "@/app/components/InfoSection";
+import ButtonCollection from "@/app/components/ButtonCollection";
 
 export default function Sidebar() {
   return (
