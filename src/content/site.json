@@ -1,0 +1,43 @@
+{
+  "Title": "Gian Paul Ramirez",
+  "Subtitle": "Software Engineer • ML • Game Tools",
+  "Avatar": "/images/avatar.jpg",
+  "Resume": "/resume/Gian-Paul-Ramirez.pdf",
+  "GitHub": "https://github.com/your-handle",
+  "Contact Me": "mailto:gian@example.com",
+  "Projects": [
+    {
+      "Title": "Groundbreak",
+      "Image": "/images/projects/groundbreak.gif",
+      "Description": "Small rougelike tactics RPG made in Unity.",
+      "Tags": {
+        "tag-1": "Unity",
+        "tag-2": "C#",
+        "tag-3": "Playtesting"
+      },
+      "Link": "https://github.com/paul-rl/Groundbreak/"
+    },
+    {
+      "Title": "Keystone",
+      "Image": "/images/projects/keystone.png",
+      "Description": "Created a GDD for Keystone, an open-world exploration game.",
+      "Tags": {
+        "tag-1": "Prototyping",
+        "tag-2": "Twilio"
+      },
+      "Link": "/files/keystone_gdd.pdf"
+    }
+  ],
+  "Hobbies": [
+    {
+      "Title": "Weightlifting",
+      "Image": "/images/hobbies/globe.svg",
+      "Description": "Powerbuilding split, mobility focus."
+    },
+    {
+      "Title": "Street Fighter 6",
+      "Image": "/images/hobbies/window.svg",
+      "Description": "Grinding ranked, labbing Blank-chan setups."
+    }
+  ]
+}
