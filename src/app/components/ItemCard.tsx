@@ -66,7 +66,7 @@ export default function ItemCard({
 
         {tags.length > 0 && (
           <div
-            className="mt-[clamp(1rem,2vw,2rem)] flex flex-wrap justify-center gap-2"
+            className="flex flex-wrap justify-center gap-2 mt-[.5rem] mb-[.5rem]"
             aria-label="Project tags"
           >
             {tags.slice(0, 5).map((tag, i) => (
