@@ -1,6 +1,6 @@
-import HeaderTabs from "./components/HeaderTabs";
-import ItemShowcase from "./components/ItemShowcase";
-import ProjectsCarousel from "./components/carousels/ProjectsCarousel";
+import HeaderTabs from "@/app/components/HeaderTabs";
+import ItemShowcase from "@/app/components/ItemShowcase";
+import ProjectsCarousel from "@/app/components/carousels/ProjectsCarousel";
 
 const slides = [
   "/images/projects/keystone.jpg",
