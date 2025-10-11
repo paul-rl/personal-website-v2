@@ -45,7 +45,6 @@ export default function Home() {
           title={activeItem.title}
           description={activeItem.description}
           tags={hasTags(activeItem) ? activeItem.tags : []}
-          className="mt-6"
         />
       )}
       {activeTab === "projects" ? (
