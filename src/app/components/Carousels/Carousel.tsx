@@ -1,5 +1,5 @@
+// Carousel.tsx
 "use client";
-
 import Chevron from "@/app/components/Chevron";
 import * as React from "react";
 
@@ -39,6 +39,11 @@ export default function Carousel<T>({
 
   const prev = React.useCallback(() => go(idx - 1), [idx, go]);
   const next = React.useCallback(() => go(idx + 1), [idx, go]);
+
+  // ⭐ NEW: notify parent on mount and whenever idx changes
+  React.useEffect(() => {
+    onIndexChange?.(idx);
+  }, [idx, onIndexChange]);
 
   const wrapRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {

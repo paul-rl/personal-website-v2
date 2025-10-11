@@ -1,3 +1,4 @@
+// app/components/ProjectsCarousel.tsx
 "use client";
 
 import Image from "next/image";
@@ -7,28 +8,30 @@ import type { SiteProject } from "@/app/lib/siteData";
 
 type Props = {
   className?: string;
-  /** Optional override. If omitted, uses siteData.projects from JSON */
+  /** Optional override; otherwise uses JSON siteData.projects */
   projects?: SiteProject[];
+  /** Notified whenever the active slide changes */
+  onActiveChange?: (project: SiteProject, index: number) => void;
 };
 
-export default function ProjectsCarousel({ className, projects }: Props) {
+export default function ProjectsCarousel({ className, projects, onActiveChange }: Props) {
   const data = useSiteData();
   const items: SiteProject[] = projects ?? data.projects;
 
   if (!items?.length) return null;
 
   return (
-    <Carousel
+    <Carousel<SiteProject>
       items={items}
       className={className ?? "w-full max-w-[min(94vw,1200px)] mx-auto"}
       initialIndex={0}
+      onIndexChange={(i) => onActiveChange?.(items[i], i)}
       render={(proj, isActive) => (
         <figure
           className={[
             "relative overflow-hidden bg-[var(--button-inside)] aspect-[16/9]",
             isActive ? "border-[3px] border-[var(--golden)]" : "border-[3px] border-[var(--body-text)]",
           ].join(" ")}
-          // width/height are set by the carousel via CSS variables
           style={{ width: isActive ? "var(--wA)" : "var(--wS)", height: "auto" }}
         >
           <Image
