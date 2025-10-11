@@ -7,7 +7,7 @@ import ProjectsCarousel from "@/app/components/carousels/ProjectsCarousel";
 import HobbiesCarousel from "@/app/components/carousels/HobbiesCarousel";
 import ItemShowcase from "@/app/components/ItemShowcase";
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function hasTags(obj: any): obj is { tags: string[] } {
   return Array.isArray(obj.tags);
 }

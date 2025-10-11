@@ -32,7 +32,7 @@ export async function loadSiteData(
 ): Promise<SiteData> {
   const abs = path.join(process.cwd(), jsonRelativePath);
   const raw = await readFile(abs, "utf8");
-  const data = JSON.parse(raw) as any;
+  const data = JSON.parse(raw) as SiteData;
 
   // Helpers
   const ensureStr = (v: unknown, field: string) => {
@@ -53,31 +53,31 @@ export async function loadSiteData(
     return entries.map(([, v]) => v);
   };
 
-  const projects: SiteProject[] = Array.isArray(data.Projects)
-    ? data.Projects.map((p: any) => ({
-        title: ensureStr(p.Title, "Projects[].Title"),
-        image: ensureStr(p.Image, "Projects[].Image"),
-        description: ensureStr(p.Description, "Projects[].Description"),
-        tags: normalizeTags(p.Tags),
-        link: ensureStr(p.Link, "Projects[].Link"),
+  const projects: SiteProject[] = Array.isArray(data.projects)
+    ? data.projects.map((p: SiteProject) => ({
+        title: ensureStr(p.title, "Projects[].Title"),
+        image: ensureStr(p.image, "Projects[].Image"),
+        description: ensureStr(p.description, "Projects[].Description"),
+        tags: normalizeTags(p.tags),
+        link: ensureStr(p.link, "Projects[].Link"),
       }))
     : [];
 
-  const hobbies: SiteHobby[] = Array.isArray(data.Hobbies)
-    ? data.Hobbies.map((h: any) => ({
-        title: ensureStr(h.Title, "Hobbies[].Title"),
-        image: ensureStr(h.Image, "Hobbies[].Image"),
-        description: ensureStr(h.Description, "Hobbies[].Description"),
+  const hobbies: SiteHobby[] = Array.isArray(data.hobbies)
+    ? data.hobbies.map((h: SiteHobby) => ({
+        title: ensureStr(h.title, "Hobbies[].Title"),
+        image: ensureStr(h.image, "Hobbies[].Image"),
+        description: ensureStr(h.description, "Hobbies[].Description"),
       }))
     : [];
 
   const normalized: SiteData = {
-    title: ensureStr(data.Title, "Title"),
-    subtitle: ensureStr(data.Subtitle, "Subtitle"),
-    avatar: ensureStr(data.Avatar, "Avatar"),
-    resume: ensureStr(data.Resume, "Resume"),
-    github: ensureStr(data.GitHub, "GitHub"),
-    contactMe: ensureStr(data["Contact Me"], "Contact Me"),
+    title: ensureStr(data.title, "Title"),
+    subtitle: ensureStr(data.subtitle, "Subtitle"),
+    avatar: ensureStr(data.avatar, "Avatar"),
+    resume: ensureStr(data.resume, "Resume"),
+    github: ensureStr(data.github, "GitHub"),
+    contactMe: ensureStr(data.contactMe, "Contact Me"),
     projects,
     hobbies,
   };
