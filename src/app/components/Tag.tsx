@@ -16,7 +16,7 @@ const hexPath = (b: number) =>
 export default function Tag({
   label,
   borderWidth = 2,
-  bevelPct = 4,
+  bevelPct = 8,
   className = "",
 }: TagProps) {
   return (
