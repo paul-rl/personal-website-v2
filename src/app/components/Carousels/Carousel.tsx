@@ -1,6 +1,6 @@
 "use client";
 
-import Chevron from "./Chevron";
+import Chevron from "../Chevron";
 import * as React from "react";
 
 function cn(...xs: Array<string | false | null | undefined>) {

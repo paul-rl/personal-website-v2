@@ -1,20 +1,21 @@
-// components/ProjectSection.tsx
 import React from "react";
+import Tag from "./Tag";
 
 type Props = {
   imageSrc: string;
   imageAlt?: string;
+  tags: string[];
   title: string;
   description: string;
-  /** e.g. "70ch" | "720px" (default 70ch) */
   textMaxWidth?: string;
   className?: string;
 };
 
-export default function ProjectSection({
+export default function ItemShowcase({
   imageSrc,
   imageAlt = "",
   title,
+  tags,
   description,
   textMaxWidth = "70ch",
   className = "",
@@ -27,21 +28,16 @@ export default function ProjectSection({
         className,
       ].join(" ")}
     >
-      {/* STAGE: fixed responsive slot (keeps text below from shifting) */}
-      <div className="relative mx-auto h-[clamp(320px,50vh,550px)] w-full mb-2">
-        {/* Center the image inside the stage */}
+      {/* Stage: fixed responsive slot (keeps text below from shifting) */}
+      <div className="relative mx-auto h-[clamp(400px,calc(0.9375*100vh-468px),550px)] w-full mb-2">
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* The border is on the IMG itself and the IMG *shrinks to fit the stage*.
-             We subtract the 10px total border thickness so image+border never exceeds the slot. */}
           <img
             src={imageSrc}
             alt={imageAlt || "Project image"}
-            className="
-              block
-              h-auto w-auto
-              max-h-[calc(100%-10px)] max-w-[calc(100%-10px)]
-              border-[5px] border-golden
-            "
+            className="block
+                       h-auto w-auto
+                       max-h-[calc(100%-10px)] max-w-[calc(100%-10px)]
+                       border-[5px] border-golden"
           />
         </div>
       </div>
@@ -58,6 +54,13 @@ export default function ProjectSection({
       >
         {description}
       </p>
+      {tags.length > 0 && (
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+          {tags.map((t, i) => (
+            <Tag key={`${t}-${i}`} label={t} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
