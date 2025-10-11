@@ -21,34 +21,37 @@ export const metadata: Metadata = {
   description: "Personal website",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
+  
+  const siteData = await loadSiteData();
+
   return (
     <html lang="en" className={`${cinzel.variable} ${roboto.variable} bg-background`}>
       <body className="min-h-screen">
         {/* Two-pane layout, right can change via {children} */}
-        <div className="
-            grid grid-cols-1
-            md:grid-cols-[clamp(280px,34vw,520px)_1fr]
-            min-h-screen md:h-screen
-          ">
-          {/* LEFT: sticky, doesn't move based on RIGHT's scroll */}
-          <aside className="
-              md:sticky md:top-0
-              min-w-0 md:h-screen md:overflow-y-auto
-              md:border-r md:border-b-0 border-golden/20
+        <SiteDataProvider data={siteData}>
+          <div className="
+              grid grid-cols-1
+              md:grid-cols-[clamp(280px,34vw,520px)_1fr]
+              min-h-screen md:h-screen
             ">
-            <Sidebar />
-          </aside>
-
-          {/* RIGHT: independent scroll area, replaced on route change */}
-          <main className="md:h-screen md:overflow-y-auto">
-            {children}
-          </main>
-        </div>
+            {/* LEFT: sticky, doesn't move based on RIGHT's scroll */}
+            <aside className="
+                md:sticky md:top-0
+                min-w-0 md:h-screen md:overflow-y-auto
+                md:border-r md:border-b-0 border-golden/20
+              ">
+              <Sidebar />
+            </aside>
+    
+            {/* RIGHT: independent scroll area, replaced on route change */}
+            <main className="md:h-screen md:overflow-y-auto">
+              {children}
+            </main>
+          </div>
+        </SiteDataProvider>
       </body>
     </html>
   );

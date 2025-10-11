@@ -28,7 +28,7 @@ export type SiteData = {
 
 /** Read and normalize the raw JSON with the “_string_ / _path_” placeholders */
 export async function loadSiteData(
-  jsonRelativePath: string = "app/content/site.json"
+  jsonRelativePath: string = "src/app/content/site.json"
 ): Promise<SiteData> {
   const abs = path.join(process.cwd(), jsonRelativePath);
   const raw = await readFile(abs, "utf8");
