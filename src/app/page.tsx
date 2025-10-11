@@ -1,3 +1,6 @@
+"use client"
+
+import { useSiteData } from "@/app/components/SiteDataContext";
 import HeaderTabs from "@/app/components/HeaderTabs";
 import ItemShowcase from "@/app/components/ItemShowcase";
 import ProjectsCarousel from "@/app/components/carousels/ProjectsCarousel";
@@ -21,7 +24,7 @@ export default function Home() {
         textMaxWidth="69ch"
         className="mb-3"
       />
-      <ProjectsCarousel />
+      <ProjectsCarousel/>
     </div>
   );
 }
