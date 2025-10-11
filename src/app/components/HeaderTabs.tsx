@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+type HeaderTabsProps = {
+  className?: string;
+  active: "projects" | "about";
+  onChange: (tab: "projects" | "about") => void;
+};
 
-export default function HeaderTabs({className} : {className: string}) {
-  const [active, setActive] = useState<"projects" | "about">("projects");
-
+export default function HeaderTabs({ className = "", active = "projects", onChange }: HeaderTabsProps) {
   return (
     <div className={`flex gap-8 px-8 py-3 font-serif text-lg ${className}`}>
       <button
-        onClick={() => setActive("projects")}
+        onClick={() => onChange("projects")}
         className={`uppercase tracking-wide transition-colors ${
           active === "projects"
             ? "text-golden border-b border-golden pb-[2px]"
@@ -19,7 +21,7 @@ export default function HeaderTabs({className} : {className: string}) {
       </button>
 
       <button
-        onClick={() => setActive("about")}
+        onClick={() => onChange("about")}
         className={`uppercase tracking-wide transition-colors ${
           active === "about"
             ? "text-golden border-b border-golden pb-[2px]"

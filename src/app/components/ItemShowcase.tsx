@@ -4,7 +4,7 @@ import Tag from "@/app/components/Tag";
 type Props = {
   imageSrc: string;
   imageAlt?: string;
-  tags: string[];
+  tags?: string[];
   title: string;
   description: string;
   textMaxWidth?: string;
@@ -54,7 +54,7 @@ export default function ItemShowcase({
       >
         {description}
       </p>
-      {tags.length > 0 && (
+      {tags && tags.length > 0 && (
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           {tags.map((t, i) => (
             <Tag key={`${t}-${i}`} label={t} />

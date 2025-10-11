@@ -1,5 +1,5 @@
-// Carousel.tsx
 "use client";
+
 import Chevron from "@/app/components/Chevron";
 import * as React from "react";
 
@@ -40,10 +40,14 @@ export default function Carousel<T>({
   const prev = React.useCallback(() => go(idx - 1), [idx, go]);
   const next = React.useCallback(() => go(idx + 1), [idx, go]);
 
-  // ⭐ NEW: notify parent on mount and whenever idx changes
+  // Notify parent on mount and whenever index changes
   React.useEffect(() => {
     onIndexChange?.(idx);
   }, [idx, onIndexChange]);
+
+  // Fix for flash: hide side slides until first layout pass
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
 
   const wrapRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
@@ -68,20 +72,13 @@ export default function Carousel<T>({
       <style jsx>{`
         [data-carousel] {
           --railW: min(96vw, 800px);
-
-          /* proportions (active is ~25% wider than side) */
-          --colS: 1fr;
-          --colA: 1.25fr;
           --gap: clamp(12px, 2vw, 28px);
-
           /* reserved space so chevrons never overlap thumbnails */
           --chev: clamp(28px, 5.5vw, 64px);
           --chev-gap: clamp(4px, 0.8vw, 12px);
           --lane: calc(var(--chev) + 2 * var(--chev-gap));
-
           /* aspect ratio for all cards */
           --aspect: 16/9;
-
           /* dots */
           --dot: clamp(6px, 1.25vw, 14px);
           --dotActive: clamp(12px, 1.8vw, 18px);
@@ -144,14 +141,21 @@ export default function Carousel<T>({
           <div
             className="grid items-center"
             style={{
-              gridTemplateColumns: "var(--colS) var(--colA) var(--colS)",
+              gridTemplateColumns: "1fr 1.25fr 1fr",
               columnGap: "var(--gap)",
             }}
           >
             {/* Left (small) */}
             <button aria-label="Go to previous slide" onClick={prev} className="relative w-full">
               <div className="relative w-full" style={{ aspectRatio: "var(--aspect)" }}>
-                <div className="absolute inset-0 opacity-90 transition">
+                <div
+                  className="absolute inset-0 transition"
+                  style={{
+                    opacity: mounted ? 0.9 : 0,
+                    visibility: mounted ? "visible" : "hidden",
+                    transition: "opacity 0.25s ease-in-out, visibility 0s linear 0.25s",
+                  }}
+                >
                   {render(items[left], false)}
                 </div>
               </div>
@@ -160,8 +164,14 @@ export default function Carousel<T>({
             {/* Active (slightly bigger) */}
             <div className="relative w-full drop-shadow-[0_6px_20px_rgba(0,0,0,0.35)]">
               <div className="relative w-full" style={{ aspectRatio: "var(--aspect)" }}>
-                <div className="absolute inset-0 transition">
-                  {render(items[idx], true)}
+                <div 
+                  className="absolute inset-0 transition"
+                  style={{
+                    opacity: mounted ? 0.9 : 0,
+                    visibility: mounted ? "visible" : "hidden",
+                    transition: "opacity 0.25s ease-in-out, visibility 0s linear 0.25s",
+                  }}>
+                    {render(items[idx], true)}
                 </div>
               </div>
             </div>
@@ -169,7 +179,14 @@ export default function Carousel<T>({
             {/* Right (small) */}
             <button aria-label="Go to next slide" onClick={next} className="relative w-full">
               <div className="relative w-full" style={{ aspectRatio: "var(--aspect)" }}>
-                <div className="absolute inset-0 opacity-90 transition">
+                <div
+                  className="absolute inset-0 transition"
+                  style={{
+                    opacity: mounted ? 0.9 : 0,
+                    visibility: mounted ? "visible" : "hidden",
+                    transition: "opacity 0.25s ease-in-out, visibility 0s linear 0.25s",
+                  }}
+                >
                   {render(items[right], false)}
                 </div>
               </div>
