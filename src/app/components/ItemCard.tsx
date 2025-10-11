@@ -49,7 +49,7 @@ export default function ItemCard({
         <h3
           className="mt-[clamp(0.5rem,2vw,1.2rem)] italic leading-tight text-cream"
           style={{
-            fontSize: "clamp(1.5rem,2.2vw + 1rem,2.25rem)",
+            fontSize: "clamp(.5rem,5vw,1.5rem)",
             textAlign: "center",
             maxWidth: "100%",
           }}
