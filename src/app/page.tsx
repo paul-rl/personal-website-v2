@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useSiteData } from "@/app/components/SiteDataContext";
 import HeaderTabs from "@/app/components/main_page/HeaderTabs";
-import ProjectsCarousel from "@/app/components/carousels/ProjectsCarousel";
-import HobbiesCarousel from "@/app/components/carousels/HobbiesCarousel";
+import ProjectsCarousel from "@/app/components/main_page/carousels/ProjectsCarousel";
+import HobbiesCarousel from "@/app/components/main_page/carousels/HobbiesCarousel";
 import ItemShowcase from "@/app/components/main_page/ItemShowcase";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,31 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import Carousel from "@/app/components/carousels/Carousel";
+import Carousel from "@/app/components/main_page/carousels/Carousel";
 import { useSiteData } from "@/app/components/SiteDataContext";
-import type { SiteHobby } from "@/app/lib/siteData";
+import type { SiteProject } from "@/app/lib/siteData";
 
 type Props = {
   className?: string;
-  /** Optional override. If omitted, uses siteData.hobbies from JSON */
-  hobbies?: SiteHobby[];
   /** Notified whenever the active slide changes */
-  onActiveChange?: (hobby: SiteHobby, index: number) => void;
+  onActiveChange?: (project: SiteProject, index: number) => void;
 };
 
-export default function HobbiesCarousel({ className, hobbies, onActiveChange }: Props) {
+export default function ProjectsCarousel({ className, onActiveChange }: Props) {
   const data = useSiteData();
-  const items: SiteHobby[] = hobbies ?? data.hobbies;
+  const items: SiteProject[] = data.projects;
 
   if (!items?.length) return null;
 
   return (
-    <Carousel<SiteHobby>
+    <Carousel<SiteProject>
       items={items}
       className={className ?? "w-full max-w-[min(94vw,1200px)] mx-auto"}
       initialIndex={0}
       onIndexChange={(i) => onActiveChange?.(items[i], i)}
-      render={(hobby, isActive) => (
+      render={(proj, isActive) => (
         <figure
           className={[
             "relative overflow-hidden bg-[var(--button-inside)] aspect-[16/9]",
@@ -34,18 +32,14 @@ export default function HobbiesCarousel({ className, hobbies, onActiveChange }: 
           style={{ width: isActive ? "var(--wA)" : "var(--wS)", height: "auto" }}
         >
           <Image
-            src={hobby.image}
-            alt={hobby.title ?? ""}
+            src={proj.image}
+            alt={proj.title ?? ""}
             fill
             className="object-cover"
             sizes="(min-width: 1280px) 40vw, (min-width: 768px) 60vw, 90vw"
-            unoptimized={/\.(gif)$/i.test(hobby.image)}
+            unoptimized={proj.image.endsWith(".gif")}
             priority
           />
-          {/* Optional caption: 
-          <figcaption className="absolute bottom-0 left-0 right-0 bg-black/40 px-3 py-2 text-sm">
-            {hobby.title}
-          </figcaption> */}
         </figure>
       )}
     />
