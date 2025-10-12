@@ -1,6 +1,6 @@
 "use client";
 
-import Chevron from "@/app/components/Chevron";
+import Chevron from "@/app/components/icons/Chevron";
 import * as React from "react";
 
 function cn(...xs: Array<string | false | null | undefined>) {

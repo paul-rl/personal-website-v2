@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Roboto } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/app/components/Sidebar";
+import Sidebar from "@/app/components/sidebar/Sidebar";
 import { loadSiteData } from "@/app/lib/siteData";
 import { SiteDataProvider } from "@/app/components/SiteDataContext";
 
