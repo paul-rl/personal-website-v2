@@ -1,76 +1,76 @@
 {
-  "Title": "Gian Paul Ramirez",
-  "Subtitle": "Software Engineer • ML • Game Tools",
-  "Avatar": "/images/avatar.jpg",
-  "Resume": "/resume/Gian-Paul-Ramirez.pdf",
-  "GitHub": "https://github.com/your-handle",
-  "Contact Me": "mailto:gian@example.com",
-  "Projects": [
+  "title": "Gian Paul Ramirez",
+  "subtitle": "Software Engineer • ML • Game Tools",
+  "avatar": "/images/avatar.jpg",
+  "resume": "/resume/Gian-Paul-Ramirez.pdf",
+  "github": "https://github.com/your-handle",
+  "contactMe": "mailto:gian@example.com",
+  "projects": [
     {
-      "Title": "Groundbreak",
-      "Image": "/images/projects/groundbreak.gif",
-      "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
-      "Tags": {
+      "title": "Groundbreak",
+      "image": "/images/projects/groundbreak.gif",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "tags": {
         "tag-1": "Unity",
         "tag-2": "C#",
         "tag-3": "Playtesting"
       },
-      "Link": "https://github.com/paul-rl/Groundbreak/"
+      "link": "https://github.com/paul-rl/Groundbreak/"
     },
     {
-      "Title": "Keystone",
-      "Image": "/images/projects/keystone.jpg",
-      "Description": "Created a GDD for Keystone, an open-world exploration game.",
-      "Tags": {
+      "title": "Keystone",
+      "image": "/images/projects/keystone.jpg",
+      "description": "Created a GDD for Keystone, an open-world exploration game.",
+      "tags": {
         "tag-1": "Prototyping",
         "tag-2": "Twilio"
       },
-      "Link": "/files/keystone_gdd.pdf"
+      "link": "/files/keystone_gdd.pdf"
     },
     {
-      "Title": "Fakeflix",
-      "Image": "/images/projects/fakeflix.png",
-      "Description": "Worked on existing fake copy of netflix to make changes.",
-      "Tags": {
+      "title": "Fakeflix",
+      "image": "/images/projects/fakeflix.png",
+      "description": "Worked on existing fake copy of netflix to make changes.",
+      "tags": {
         "tag-1": "TypeScript",
         "tag-2": "React",
         "tag-3": "CI/CD"
       },
-      "Link": "https://github.com/UCF-CEN-5016/sde-project-works-on-my-machine"
+      "link": "https://github.com/UCF-CEN-5016/sde-project-works-on-my-machine"
     },
     {
-      "Title": "Steam Recommendation Engine",
-      "Image": "/images/projects/file.svg",
-      "Description": "Small rougelike tactics RPG made in Unity.",
-      "Tags": {
+      "title": "Steam Recommendation Engine",
+      "image": "/images/projects/file.svg",
+      "description": "Small rougelike tactics RPG made in Unity.",
+      "tags": {
         "tag-1": "Python",
         "tag-2": "SASRec",
         "tag-3": "PyTorch"
       },
-      "Link": "https://github.com/paul-rl/Groundbreak/"
+      "link": "https://github.com/paul-rl/Groundbreak/"
     },
     {
-      "Title": "Personal Website",
-      "Image": "/images/projects/header.png",
-      "Description": "This very same website you're looking at :)",
-      "Tags": {
+      "title": "Personal Website",
+      "image": "/images/projects/header.png",
+      "description": "This very same website you're looking at :)",
+      "tags": {
         "tag-1": "TypeScript",
         "tag-2": "React",
         "tag-3": "Tailwind-css"
       },
-      "Link": "https://github.com/paul-rl/personal-website-v2"
+      "link": "https://github.com/paul-rl/personal-website-v2"
     }
   ],
-  "Hobbies": [
+  "hobbies": [
     {
-      "Title": "Weightlifting",
-      "Image": "/images/hobbies/globe.svg",
-      "Description": "Powerbuilding split, mobility focus."
+      "title": "Weightlifting",
+      "image": "/images/hobbies/globe.svg",
+      "description": "Powerbuilding split, mobility focus."
     },
     {
-      "Title": "Street Fighter 6",
-      "Image": "/images/hobbies/window.svg",
-      "Description": "Grinding ranked, labbing Blank-chan setups."
+      "title": "Street Fighter 6",
+      "image": "/images/hobbies/window.svg",
+      "description": "Grinding ranked, labbing Blank-chan setups."
     }
   ]
 }

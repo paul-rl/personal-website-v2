@@ -24,6 +24,7 @@ export type SiteData = {
   contactMe: string;  // mailto
   projects: SiteProject[];
   hobbies: SiteHobby[];
+  tags: string[];
 };
 
 /** Read and normalize the raw JSON with the “_string_ / _path_” placeholders */
@@ -36,7 +37,7 @@ export async function loadSiteData(
 
   // Helpers
   const ensureStr = (v: unknown, field: string) => {
-    if (typeof v !== "string") throw new Error(`Expected string for "${field}"`);
+    if (typeof v !== "string") throw new Error(`Expected string for "${field}", type is: ${typeof v}`);
     return v;
   };
 
