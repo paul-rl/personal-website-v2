@@ -20,7 +20,7 @@
     {
       "title": "Keystone",
       "image": "/images/projects/keystone.jpg",
-      "description": "Created a GDD for Keystone, an open-world exploration game.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
       "tags": {
         "tag-1": "Prototyping",
         "tag-2": "Twilio"
@@ -30,7 +30,7 @@
     {
       "title": "Fakeflix",
       "image": "/images/projects/fakeflix.png",
-      "description": "Worked on existing fake copy of netflix to make changes.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
       "tags": {
         "tag-1": "TypeScript",
         "tag-2": "React",
@@ -41,7 +41,7 @@
     {
       "title": "Steam Recommendation Engine",
       "image": "/images/projects/file.svg",
-      "description": "Small rougelike tactics RPG made in Unity.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
       "tags": {
         "tag-1": "Python",
         "tag-2": "SASRec",
@@ -52,7 +52,7 @@
     {
       "title": "Personal Website",
       "image": "/images/projects/header.png",
-      "description": "This very same website you're looking at :)",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
       "tags": {
         "tag-1": "TypeScript",
         "tag-2": "React",
@@ -65,12 +65,12 @@
     {
       "title": "Weightlifting",
       "image": "/images/hobbies/globe.svg",
-      "description": "Powerbuilding split, mobility focus."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum."
     },
     {
       "title": "Street Fighter 6",
       "image": "/images/hobbies/window.svg",
-      "description": "Grinding ranked, labbing Blank-chan setups."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum."
     }
   ]
 }
