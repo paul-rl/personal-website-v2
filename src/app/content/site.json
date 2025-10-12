@@ -1,0 +1,76 @@
+{
+  "title": "Gian Paul Ramirez",
+  "subtitle": "Software Engineer • ML • Game Tools",
+  "avatar": "/images/avatar.jpg",
+  "resume": "/resume/Gian-Paul-Ramirez.pdf",
+  "github": "https://github.com/your-handle",
+  "contactMe": "mailto:gian@example.com",
+  "projects": [
+    {
+      "title": "Groundbreak",
+      "image": "/images/projects/groundbreak.gif",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "tags": {
+        "tag-1": "Unity",
+        "tag-2": "C#",
+        "tag-3": "Playtesting"
+      },
+      "link": "https://github.com/paul-rl/Groundbreak/"
+    },
+    {
+      "title": "Keystone",
+      "image": "/images/projects/keystone.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "tags": {
+        "tag-1": "Prototyping",
+        "tag-2": "Twilio"
+      },
+      "link": "/files/keystone_gdd.pdf"
+    },
+    {
+      "title": "Fakeflix",
+      "image": "/images/projects/fakeflix.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "tags": {
+        "tag-1": "TypeScript",
+        "tag-2": "React",
+        "tag-3": "CI/CD"
+      },
+      "link": "https://github.com/UCF-CEN-5016/sde-project-works-on-my-machine"
+    },
+    {
+      "title": "Steam Recommendation Engine",
+      "image": "/images/projects/file.svg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "tags": {
+        "tag-1": "Python",
+        "tag-2": "SASRec",
+        "tag-3": "PyTorch"
+      },
+      "link": "https://github.com/paul-rl/Groundbreak/"
+    },
+    {
+      "title": "Personal Website",
+      "image": "/images/projects/header.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "tags": {
+        "tag-1": "TypeScript",
+        "tag-2": "React",
+        "tag-3": "Tailwind-css"
+      },
+      "link": "https://github.com/paul-rl/personal-website-v2"
+    }
+  ],
+  "hobbies": [
+    {
+      "title": "Weightlifting",
+      "image": "/images/hobbies/globe.svg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum."
+    },
+    {
+      "title": "Street Fighter 6",
+      "image": "/images/hobbies/window.svg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum."
+    }
+  ]
+}
