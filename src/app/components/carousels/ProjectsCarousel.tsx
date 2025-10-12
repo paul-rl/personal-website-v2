@@ -1,4 +1,3 @@
-// app/components/ProjectsCarousel.tsx
 "use client";
 
 import Image from "next/image";

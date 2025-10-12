@@ -1,4 +1,4 @@
-function PaletteIcon({ className = "w-6 h-6" }: { className?: string }) {
+export default function PaletteIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
