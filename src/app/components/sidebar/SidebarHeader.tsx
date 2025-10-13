@@ -10,7 +10,7 @@ type Props = {
 export default function SidebarHeader({
   className,
   name = "Gian Paul Ramirez",
-  subtitle = "Software Developer",
+  subtitle = "THE CURIOUS CODEWRIGHT",
   avatarSrc = "/images/header.png",
 }: Props) {
   return (

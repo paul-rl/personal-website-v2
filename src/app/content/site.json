@@ -1,15 +1,15 @@
 {
   "title": "Gian Paul Ramirez",
-  "subtitle": "Software Engineer • ML • Game Tools",
+  "subtitle": "THE CURIOUS CODEWRIGHT",
   "avatar": "/images/avatar.jpg",
   "resume": "/resume/Gian-Paul-Ramirez.pdf",
-  "github": "https://github.com/your-handle",
-  "contactMe": "mailto:gian@example.com",
+  "github": "https://github.com/paul-rl",
+  "contactMe": "mailto:gpaul.rl7@gmail.com",
   "projects": [
     {
       "title": "Groundbreak",
       "image": "/images/projects/groundbreak.gif",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "description": "What if the arena itself were your arsenal? Groundbreak is a roguelike tactics RPG where you sling element-infused tiles to create reactions; sandstorms, smoke, fireballs and more will help you outsmart a multi-floor dungeon of creepy-crawlies. On a four person team, I led combat design and implementation: tile-flinging, the elemental reaction system, and enemy AI powered by A* pathfinding. My favorite part was iterating with 10+ playtesters, tuning each element so multiple viable build paths emerged, keeping every choice fun. (RIP Sandstorm)",
       "tags": {
         "tag-1": "Unity",
         "tag-2": "C#",
