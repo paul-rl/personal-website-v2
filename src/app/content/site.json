@@ -31,7 +31,7 @@
     {
       "title": "Fakeflix",
       "image": "/images/projects/fakeflix.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "description": "FakeFlix was my first real dive into front-end development. I expanded a 35k+ React/Redux codebase to add a “Because You Watched” recommendations rail and build new reusable UI components. It was a crash course in how React and Redux intertwine to handle complex states and the satisfaction that comes with making interfaces feel as good as they look. I also dipped my toes in DevOps work for the first time, setting up GitHub Actions to automate testing and keep the codebase stable.",
       "tags": {
         "tag-1": "TypeScript",
         "tag-2": "React",
