@@ -57,7 +57,7 @@
     {
       "title": "Personal Website",
       "image": "/images/projects/header.png",
-      "description": "You’re on it! Designed in Figma and built with Next.js, React, and Tailwind CSS, it began as a way to challenge myself to grow in the field of front-end development. A passion project inspired by League of Legends’ champion pages, I wanted to create a site where every element not only looked good but felt good, no matter what device you're viewing it from. Now, it serves as my hub for showcasing projects, growth, and the things I love the most.",
+      "description": "You’re on it! Designed in Figma and built with Next.js, React, and Tailwind CSS, it began as a way to challenge myself to grow in the field of front-end development. A passion project inspired by League of Legends’ champion pages, I wanted to create a site where every element not only looked good, but felt good. I focused on dealing with different aspect ratios, creating a hassle-free experience no matter what device you're viewing it from. Now, it's my hub for showcasing projects and the things I love the most.",
       "tags": {
         "tag-1": "TypeScript",
         "tag-2": "React",
