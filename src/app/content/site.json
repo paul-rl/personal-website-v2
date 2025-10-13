@@ -34,8 +34,9 @@
       "description": "FakeFlix was my first real dive into front-end development. I expanded a 35k+ React/Redux codebase to add a “Because You Watched” recommendations rail and build new reusable UI components. It was a crash course in how React and Redux intertwine to handle complex states and the satisfaction that comes with making interfaces feel as good as they look. I also dipped my toes in DevOps work for the first time, setting up GitHub Actions to automate testing and keep the codebase stable.",
       "tags": {
         "tag-1": "TypeScript",
-        "tag-2": "React",
-        "tag-3": "CI/CD"
+        "tag-2": "React/Redux",
+        "tag-3": "CI/CD",
+        "tag-4": "GitHub Actions"
       },
       "link": "https://github.com/UCF-CEN-5016/sde-project-works-on-my-machine"
     },
