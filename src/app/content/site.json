@@ -20,10 +20,11 @@
     {
       "title": "Keystone",
       "image": "/images/projects/keystone.jpg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "description": "What if NPCs were the puzzle pieces? Keystone is an open-world adventure where NPC behaviors intertwine. By herding, distracting, trading aggro, and luring enemies, players uncover hidden paths and secrets woven into the world’s ecosystem. Working in a four-person cross-fuctional team, I designed six different dungeons built around player-enemy interaction. This was my first experience prototyping and playtesting, creating a lightweight choose-your-own-adventure protoype to help test puzzle flow and ecosystem designs early in development.",
       "tags": {
         "tag-1": "Prototyping",
-        "tag-2": "Twilio"
+        "tag-2": "Twilio",
+        "tag-3": "Cross-functional Team"
       },
       "link": "/files/keystone_gdd.pdf"
     },
