@@ -9,7 +9,7 @@
     {
       "title": "Groundbreak",
       "image": "/images/projects/groundbreak.gif",
-      "description": "What if the arena itself were your arsenal? Groundbreak is a roguelike tactics RPG where you sling element-infused tiles to create reactions; sandstorms, smoke, fireballs and more will help you outsmart a multi-floor dungeon of creepy-crawlies. On a four person team, I led combat design and implementation: tile-flinging, the elemental reaction system, and enemy AI powered by A* pathfinding. My favorite part was iterating with 10+ playtesters, tuning each element so multiple viable build paths emerged, keeping every choice fun. (RIP Sandstorm)",
+      "description": "What if the arena itself were your arsenal? Groundbreak is a roguelike tactics RPG where you sling elemental tiles to trigger reactions such as sandstorms and fireballs to escape a multi-floor dungeon. As part of a four-person team, I led combat design, building the tile-flinging mechanics, elemental reaction system, and enemy AI powered by A* pathfinding. The most rewarding part was playtesting with over ten players to balance the elements and create diverse, fun build paths. (RIP Sandstorm)",
       "tags": {
         "tag-1": "Unity",
         "tag-2": "C#",
