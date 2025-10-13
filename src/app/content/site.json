@@ -22,7 +22,7 @@
     {
       "title": "Keystone",
       "image": "/images/projects/keystone.jpg",
-      "description": "What if NPCs were the puzzle pieces? Keystone is an open-world adventure where NPC behaviors intertwine. By herding, distracting, trading aggro, and luring enemies, players uncover hidden paths and secrets woven into the world’s ecosystem. Working in a four-person cross-fuctional team, I designed six different dungeons built around player-enemy interaction. This was my first experience prototyping and playtesting, creating a lightweight choose-your-own-adventure protoype to help test puzzle flow and ecosystem designs early in development.",
+      "description": "What if NPCs were the puzzle pieces? Keystone is an open-world adventure where NPC behaviors intertwine. By herding, distracting, trading aggro, and luring enemies, players uncover hidden paths and secrets woven into the world’s ecosystem. Working in a four-person cross-functional team, I designed six dungeons centered on player-enemy interaction and built a choose-your-own-adventure prototype to test puzzle flow and ecosystem design early in development.",
       "tags": {
         "tag-1": "Prototyping",
         "tag-2": "Twilio",
@@ -57,7 +57,7 @@
     {
       "title": "Personal Website",
       "image": "/images/projects/header.png",
-      "description": "You’re on it! Designed in Figma and built with Next.js and Tailwind CSS, it began as a way to challenge myself in front-end development. A passion project inspired by League of Legends’ champion pages, I wanted to create a site that where every element not only looks good but feels good, no matter what device you're viewing it from. Now, it serves as my hub for showcasing projects, growth, and the things I love the most.",
+      "description": "You’re on it! Designed in Figma and built with Next.js, React, and Tailwind CSS, it began as a way to challenge myself to grow in the field of front-end development. A passion project inspired by League of Legends’ champion pages, I wanted to create a site where every element not only looked good but felt good, no matter what device you're viewing it from. Now, it serves as my hub for showcasing projects, growth, and the things I love the most.",
       "tags": {
         "tag-1": "TypeScript",
         "tag-2": "React",
