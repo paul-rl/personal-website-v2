@@ -1,4 +1,3 @@
-// components/Radar.tsx
 "use client";
 
 import Image from "next/image";
