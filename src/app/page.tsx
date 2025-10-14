@@ -2,15 +2,12 @@
 
 import { useState } from "react";
 import { useSiteData } from "@/app/components/SiteDataContext";
-import HeaderTabs from "@/app/components/HeaderTabs";
-import ProjectsCarousel from "@/app/components/carousels/ProjectsCarousel";
-import HobbiesCarousel from "@/app/components/carousels/HobbiesCarousel";
-import ItemShowcase from "@/app/components/ItemShowcase";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function hasTags(obj: any): obj is { tags: string[] } {
-  return Array.isArray(obj.tags);
-}
+import HeaderTabs from "@/app/components/main_page/HeaderTabs";
+import ProjectsCarousel from "@/app/components/main_page/carousels/ProjectsCarousel";
+import HobbiesCarousel from "@/app/components/main_page/carousels/HobbiesCarousel";
+import ItemShowcase from "@/app/components/main_page/ItemShowcase";
+import { SiteProject } from "./lib/siteData";
+import hasTags from "@/app/utils/hasTags";
 
 export default function Home() {
   const data = useSiteData();
@@ -43,6 +40,7 @@ export default function Home() {
           imageSrc={activeItem.image}
           imageAlt={activeItem.title}
           title={activeItem.title}
+          link={(activeItem as SiteProject).link}
           description={activeItem.description}
           tags={hasTags(activeItem) ? activeItem.tags : []}
         />
