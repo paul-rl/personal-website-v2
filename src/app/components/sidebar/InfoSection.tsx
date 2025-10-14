@@ -1,6 +1,6 @@
-import ComputerIcon from "@/app/components/icons/ComputerIcon"
-import PaletteIcon from "@/app/components/icons/PaletteIcon"
-import Radar from "@/app/components/icons/Radar";
+import ComputerIcon from "@/app/components/icons/Computer"
+import PaletteIcon from "@/app/components/icons/Palette"
+import Radar from "@/app/components/icons/radar/Radar";
 
 type InfoSectionProps = {
   focus?: string;
@@ -56,7 +56,7 @@ export default function InfoSection({
 
       {/* Right: Radar */}
       <div className="relative w-[clamp(160px,38vw,320px)] aspect-square">
-        <Radar />
+        <Radar/>
       </div>
     </section>
   );
