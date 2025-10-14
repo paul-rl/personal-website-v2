@@ -1,6 +1,6 @@
 import ComputerIcon from "@/app/components/icons/Computer"
 import PaletteIcon from "@/app/components/icons/Palette"
-import Radar from "@/app/components/icons/radar/Radar";
+import Radar from "@/app/components/sidebar/Radar";
 
 type InfoSectionProps = {
   focus?: string;

@@ -1,6 +1,6 @@
-export default function Initiative() {
+export default function Initiative({ className = "" }: { className?: string }) {
   return (
-    <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`${className}`}>
       <path fillRule="evenodd" clipRule="evenodd" d="M9.80493 9.01975C9.12793 10.0357 8.51893 11.0527 8.14493 11.7197L7.20593 10.7447C6.62179 10.1277 6.62179 9.16175 7.20593 8.54475C7.48241 8.25472 7.86523 8.09003 8.26593 8.08875H10.4509C10.2329 8.38775 10.0159 8.69975 9.80493 9.01975Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       
       <path fillRule="evenodd" clipRule="evenodd" d="M14.98 14.1947C13.964 14.8717 12.947 15.4807 12.28 15.8547L13.255 16.7937C13.872 17.3778 14.838 17.3778 15.455 16.7937C15.7451 16.5172 15.9097 16.1344 15.911 15.7337V13.5487C15.612 13.7667 15.3 13.9837 14.98 14.1947Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
