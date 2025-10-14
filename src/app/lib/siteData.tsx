@@ -19,6 +19,7 @@ export type SiteData = {
   title: string;
   subtitle: string;
   avatar: string;     // path
+  aboutMe: string;
   resume: string;     // path
   github: string;     // url
   contactMe: string;  // mailto
@@ -75,6 +76,7 @@ export async function loadSiteData(
     title: ensureStr(data.title, "Title"),
     subtitle: ensureStr(data.subtitle, "Subtitle"),
     avatar: ensureStr(data.avatar, "Avatar"),
+    aboutMe: ensureStr(data.aboutMe, "About Me"),
     resume: ensureStr(data.resume, "Resume"),
     github: ensureStr(data.github, "GitHub"),
     contactMe: ensureStr(data.contactMe, "Contact Me"),
