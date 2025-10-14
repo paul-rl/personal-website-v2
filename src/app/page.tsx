@@ -7,11 +7,7 @@ import ProjectsCarousel from "@/app/components/main_page/carousels/ProjectsCarou
 import HobbiesCarousel from "@/app/components/main_page/carousels/HobbiesCarousel";
 import ItemShowcase from "@/app/components/main_page/ItemShowcase";
 import { SiteProject } from "./lib/siteData";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function hasTags(obj: any): obj is { tags: string[] } {
-  return Array.isArray(obj.tags);
-}
+import hasTags from "@/app/utils/hasTags";
 
 export default function Home() {
   const data = useSiteData();

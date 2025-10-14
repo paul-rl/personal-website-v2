@@ -1,5 +1,6 @@
 import React from "react";
 import Tag from "@/app/components/icons/Tag";
+import hasTags from "@/app/utils/hasTags";
 
 
 
@@ -14,6 +15,8 @@ type Props = {
   className?: string;
 };
 
+
+
 export default function ItemShowcase({
   imageSrc,
   imageAlt = "",
@@ -24,6 +27,8 @@ export default function ItemShowcase({
   textMaxWidth = "70ch",
   className = "",
 }: Props) {
+  const validTags = tags && tags.length > 0;
+  const classString = validTags ? "hover:text-golden cursor-pointer": ""
   return (
     <section
       className={[
@@ -48,7 +53,7 @@ export default function ItemShowcase({
 
       {/* Title: sans, italic, responsive, centered, cream */}
       <h2 className="italic text-cream leading-tight text-center [font-size:clamp(1.5rem,3.5vw,2rem)]">
-        <a href={link} className="hover:text-golden cursor-pointer">{title}</a>
+        <a href={link} className={classString}>{title}</a>
       </h2>
 
       {/* Body: fixed size, centered, configurable width */}
@@ -58,7 +63,7 @@ export default function ItemShowcase({
       >
         {description}
       </p>
-      {tags && tags.length > 0 && (
+      {validTags && (
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           {tags.map((t, i) => (
             <Tag key={`${t}-${i}`} label={t} />
