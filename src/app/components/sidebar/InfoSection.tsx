@@ -1,5 +1,6 @@
 import ComputerIcon from "@/app/components/icons/ComputerIcon"
 import PaletteIcon from "@/app/components/icons/PaletteIcon"
+import Radar from "@/app/components/icons/Radar";
 
 type InfoSectionProps = {
   focus?: string;
@@ -23,7 +24,7 @@ export default function InfoSection({
   className = "",
 }: InfoSectionProps) {
   return (
-    <section className={`flex items-center gap-[5rem] select-none ${className}`}>
+    <section className={`flex flex-col md:flex-row md:items-center gap-6 md:gap-16 ${className}`}>
       {/* Left: Info Stack */}
       <div className="min-w-[10rem] flex-1 space-y-4">
         {/* FOCUS */}
@@ -53,23 +54,9 @@ export default function InfoSection({
         </div>
       </div>
 
-      {/* Right: Circle placeholder */}
+      {/* Right: Radar */}
       <div className="relative w-[clamp(160px,38vw,320px)] aspect-square">
-        <svg
-          viewBox="0 0 100 100"
-          className="absolute inset-0 w-full h-full"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <circle
-            cx="50"
-            cy="50"
-            r="48"
-            fill="none"
-            className="stroke-white"
-            strokeWidth={2}
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
+        <Radar />
       </div>
     </section>
   );
