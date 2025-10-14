@@ -1,6 +1,7 @@
 import React from "react";
 import Tag from "@/app/components/icons/Tag";
 import hasTags from "@/app/utils/hasTags";
+import Image from "next/image";
 
 
 
@@ -53,8 +54,35 @@ export default function ItemShowcase({
 
       {/* Title: sans, italic, responsive, centered, cream */}
       <h2 className="italic text-cream leading-tight text-center [font-size:clamp(1.5rem,3.5vw,2rem)]">
-        <a href={link} className={classString}>{title}</a>
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${title} (opens in a new tab)`}
+          className={`inline-flex items-baseline gap-1 align-middle group ${classString}`}
+        >
+          <span>{title}</span>
+            {validTags && 
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="w-[.5em] h-[.5em] translate-y-[1px] opacity-70 transition
+                           group-hover:opacity-100 group-hover:translate-x-0.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* external-link icon */}
+                <path d="M14 3h7v7" />
+                <path d="M21 3l-8.5 8.5" />
+                <path d="M21 14v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+              </svg>
+            }
+        </a>
       </h2>
+
 
       {/* Body: fixed size, centered, configurable width */}
       <p
