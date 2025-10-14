@@ -6,11 +6,11 @@ import type { ComponentType, SVGProps } from "react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-import Adaptability from "@/app/components/icons/radar/sections/Adaptability";
-import Collaboration from "@/app/components/icons/radar/sections/Collaboration";
-import Communication from "@/app/components/icons/radar/sections/Communication";
-import Initiative from "@/app/components/icons/radar/sections/Initiative";
-import Ownership from "@/app/components/icons/radar/sections/Ownership";
+import Adaptability from "@/app/components/icons/radar/Adaptability";
+import Collaboration from "@/app/components/icons/radar/Collaboration";
+import Communication from "@/app/components/icons/radar/Communication";
+import Initiative from "@/app/components/icons/radar/Initiative";
+import Ownership from "@/app/components/icons/radar/Ownership";
 
 type IconComp = ComponentType<SVGProps<SVGSVGElement>>;
 type IconEntry = { Comp: IconComp; label: string; description: string };
