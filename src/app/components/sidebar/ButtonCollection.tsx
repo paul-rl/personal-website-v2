@@ -1,11 +1,15 @@
+import { useSiteData } from "@/app/components/SiteDataContext";
+
 export default function ButtonCollection({className} : {className?:string}){
+  const data = useSiteData();
+  
   return (
     <div className = {`flex justify-center items-center ${className}`}>
       <div className="w-[320px]">
         {/* Top two buttons side by side */}
         <div className="flex justify-between mb-[3rem]">
             <a
-                href="/resume-placeholder.pdf"
+                href={data.resume}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-serif uppercase 

@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Tag from "@/app/components/icons/Tag";
 
 
@@ -9,6 +8,7 @@ type Props = {
   imageAlt?: string;
   tags?: string[];
   title: string;
+  link: string;
   description: string;
   textMaxWidth?: string;
   className?: string;
@@ -18,6 +18,7 @@ export default function ItemShowcase({
   imageSrc,
   imageAlt = "",
   title,
+  link,
   tags,
   description,
   textMaxWidth = "70ch",
@@ -47,7 +48,7 @@ export default function ItemShowcase({
 
       {/* Title: sans, italic, responsive, centered, cream */}
       <h2 className="italic text-cream leading-tight text-center [font-size:clamp(1.5rem,3.5vw,2rem)]">
-        {title}
+        <a href={link} className="hover:text-golden cursor-pointer">{title}</a>
       </h2>
 
       {/* Body: fixed size, centered, configurable width */}

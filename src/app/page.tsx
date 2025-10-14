@@ -6,6 +6,7 @@ import HeaderTabs from "@/app/components/main_page/HeaderTabs";
 import ProjectsCarousel from "@/app/components/main_page/carousels/ProjectsCarousel";
 import HobbiesCarousel from "@/app/components/main_page/carousels/HobbiesCarousel";
 import ItemShowcase from "@/app/components/main_page/ItemShowcase";
+import { SiteProject } from "./lib/siteData";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function hasTags(obj: any): obj is { tags: string[] } {
@@ -43,6 +44,7 @@ export default function Home() {
           imageSrc={activeItem.image}
           imageAlt={activeItem.title}
           title={activeItem.title}
+          link={(activeItem as SiteProject).link}
           description={activeItem.description}
           tags={hasTags(activeItem) ? activeItem.tags : []}
         />
