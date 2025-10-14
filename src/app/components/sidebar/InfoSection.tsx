@@ -17,7 +17,7 @@ export default function InfoSection({
   percent = 0.4,
   mastery = 2,
   radar = {
-    labels: ["Damage", "Toughness", "Control", "Mobility", "Utility"],
+    labels: ["Communication", "Collaboration", "Ownership", "Adaptability", "Initiative"],
     values: [0.7, 0.5, 0.3, 0.6, 0.8],
   },
   className = "",
