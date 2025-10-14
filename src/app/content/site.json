@@ -22,7 +22,7 @@
     {
       "title": "Keystone",
       "image": "/images/projects/keystone.jpg",
-      "description": "What if NPCs were the puzzle pieces? Keystone is an open-world adventure where NPC behaviors intertwine. By herding, distracting, trading aggro, and luring enemies, players uncover hidden paths and secrets woven into the world’s ecosystem. Working in a four-person cross-functional team, I designed six dungeons centered on player-enemy interaction and built a choose-your-own-adventure prototype to test puzzle flow and ecosystem design early in development.",
+      "description": "What if NPCs were the puzzle pieces? Keystone is an open-world adventure where NPC behaviors intertwine. By herding, distracting, trading aggro, and luring enemies, players uncover hidden paths and secrets woven into the world’s ecosystem. It was my first time working in a cross-functional team; I quickly learned how to share a vision, designing six dungeons based on settings created by our artist. I also built a choose-your-own-adventure prototype to test puzzle flow early in development.",
       "tags": {
         "tag-1": "Prototyping",
         "tag-2": "Twilio",
@@ -34,7 +34,7 @@
     {
       "title": "Fakeflix",
       "image": "/images/projects/fakeflix.png",
-      "description": "FakeFlix was my first real dive into front-end development. I expanded a 35k+ React/Redux codebase to add a “Because You Watched” recommendations rail and build new reusable UI components. It was a crash course in how React and Redux intertwine to handle complex states and the satisfaction that comes with making interfaces feel as good as they look. I also dipped my toes in DevOps work for the first time, setting up GitHub Actions to automate testing and keep the codebase stable.",
+      "description": "FakeFlix was my first real dive into front-end development. I expanded a React/Redux codebase with 35k+ lines of code  to add a “Because You Watched” recommendations rail and build new reusable UI components. It was a crash course in how React and Redux intertwine to handle complex state, and it was satisfying to make interfaces feel as good as they look. I also dipped my toes into DevOps for the first time, setting up GitHub Actions to automate testing and keep the codebase stable.",
       "tags": {
         "tag-1": "TypeScript",
         "tag-2": "React/Redux",
@@ -46,20 +46,19 @@
     {
       "title": "Steam Recommendation Engine",
       "image": "/images/projects/steam.jpg",
-      "description": "A peek behind Steam's discovery queue turned hands-on ML lab. I built a sequence-aware recommender with a SASRec Transformer and learned the habits that actually move the needle: evaluating on a store-like slate, keeping histories chronological, and the power of careful masking. From there, the fun was in the tinkering: swapping signals, rerunning vectorized scorers, and seeing the ranking shifts. Turns out raw counts can be problematic, but it's nothing normalization can't solve.",
+      "description": "A peek behind Steam's discovery queue turned hands-on ML lab. I built a sequence-aware recommender with a SASRec Transformer and learned the habits that make an impact: evaluating on a store-like slate, keeping histories chronological, and using careful masking to prevent leakage. From there, the fun was in tinkering: swapping signals, rerunning vectorized scorers, and watching the rankings shift. Turns out raw counts can be problematic, but normalization is magical.",
       "tags": {
         "tag-1": "PyTorch",
         "tag-2": "Transformers (SASRec)",
-        "tag-3": "PyTorch",
-        "tag-4": "NumPy",
-        "tag-5": "Sequential Recommendation"
+        "tag-3": "NumPy",
+        "tag-4": "Sequential Recommendation"
       },
       "link": "https://github.com/paul-rl/Steam-Recommendation-Engine"
     },
     {
       "title": "Personal Website",
       "image": "/images/projects/header.png",
-      "description": "You’re on it! Designed in Figma and built with Next.js, React, and Tailwind CSS, it began as a way to challenge myself to grow in the field of front-end development. A passion project inspired by League of Legends’ champion pages, I wanted to create a site where every element not only looked good, but felt good. I focused on dealing with different aspect ratios, creating a hassle-free experience no matter what device you're viewing it from. Now, it's my hub for showcasing projects and the things I love the most.",
+      "description": "You’re on it! Designed in Figma and built with Next.js, React, and Tailwind CSS, it began as a way to challenge myself to grow in the field of front-end development. A passion project inspired by League of Legends’ champion pages, I wanted to create a site where every element looked and felt straight out of League. I focused on dealing with different aspect ratios to create a hassle-free experience no matter what device you're on. Now, it's my hub for showcasing projects and the things I love the most.",
       "tags": {
         "tag-1": "TypeScript",
         "tag-2": "React",
@@ -71,14 +70,19 @@
   ],
   "hobbies": [
     {
-      "title": "Weightlifting",
-      "image": "/images/hobbies/globe.svg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum."
+      "title": "Album Club",
+      "image": "/images/hobbies/album.png",
+      "description": "Music is magical, and I can never listen to enough. My friends and I love sharing music with each other, to the point where we started an Album club. Each week, one of us picks an album none of us have listened to before, and we share our thoughts and review it. It's an incredibly fun way to discover music I might never have found otherwise. Despite my general preference for alternative music, I realized that girl pop has a special place in my heart."
     },
     {
-      "title": "Street Fighter 6",
-      "image": "/images/hobbies/window.svg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum."
+      "title": "Fighting Games",
+      "image": "/images/hobbies/fight.png",
+      "description": "Nine-year-old me loved rolling under fireballs as Abel and low-checking friends while sliding across the screen with Sub-Zero. That love never died. I had a hint of the mind games as a kid, but when FighterZ launched in 2018 I dove headfirst. Since then, I haven't stopped: Guilty Gear, SF6 and now 2XKO. There's nothing more satisfying than letting your opponent know you're in their head and landing some shroomloops."
+    },
+    {
+      "title": "Live Music",
+      "image": "/images/hobbies/concert.png",
+      "description": "My first concert was BROCKHAMPTON in a small venue in 2019. Since, I've been hooked. Rock, Jazz, Reggeaton, the genre doesn't matter. Music is like a religion to me, and live music is church. There's no feeling quite like sharing a room with thousands of people, all singing and celebrating their love for music."
     }
   ]
 }
