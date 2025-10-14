@@ -16,11 +16,16 @@ type IconComp = ComponentType<SVGProps<SVGSVGElement>>;
 type IconEntry = { Comp: IconComp; label: string; description: string };
 
 const ICONS: IconEntry[] = [
-  { Comp: Communication, label: "COMMUNICATION", description: "Clear, timely, audience-aware; keeps teams aligned." },
-  { Comp: Collaboration, label: "COLLABORATION", description: "Builds together, unblocks others, shares context." },
-  { Comp: Ownership,     label: "OWNERSHIP",     description: "Takes responsibility from start to finish." },
-  { Comp: Adaptability,  label: "ADAPTABILITY",  description: "Adjusts quickly to new info and constraints." },
-  { Comp: Initiative,    label: "INITIATIVE",    description: "Spots opportunities and kickstarts progress." },
+{ Comp: Communication, label: "COMMUNICATION", description: "The developer's ability to fire clear pings and write crisp docs so the team rotates together." },
+
+{ Comp: Collaboration, label: "COLLABORATION", description: "The developer's ability to queue as a party and set teammates up for the play." },
+
+{ Comp: Ownership, label: "OWNERSHIP", description: "The developer's ability to take a feature from draft to live, read the metrics, and fix misplays fast." },
+
+{ Comp: Adaptability, label: "ADAPTABILITY", description: "The developer's ability to role-flex without tilt, learning new tech and shifting plans as the meta changes."  },
+
+{ Comp: Initiative, label: "INITIATIVE", description: "The developer's ability to spot the next objective and kick it off before the timer hits zero." },
+
 ];
 
 const START_ANGLE_DEG = -90;
@@ -28,28 +33,39 @@ const ICON_PCT        = 12;
 const EDGE_GAP_PCT    = 1;
 const RING_CLEAR_PCT  = 4;
 
-/* ---------- Tooltip in a portal (unchanged) ---------- */
+/* ---------- Tooltip in a portal ---------- */
 function PortalTooltip({
   anchorRect,
   label,
   description,
   visible,
+  containerRect,
 }: {
   anchorRect: DOMRect | null;
   label: string;
   description: string;
   visible: boolean;
+  containerRect: DOMRect | null;
 }) {
   const [pos, setPos] = useState<{ cx: number; y: number; below: boolean } | null>(null);
 
   useEffect(() => {
     if (!visible || !anchorRect) return;
+
     const gap = 12;
     const cx = anchorRect.left + anchorRect.width / 2;
-    const preferBelow = anchorRect.top < 120;
+
+    // Compare icon center vs. radar container center (fallback: viewport center)
+    const containerMidY = containerRect
+      ? containerRect.top + containerRect.height / 2
+      : window.innerHeight / 2;
+
+    const iconMidY = anchorRect.top + anchorRect.height / 2;
+    const preferBelow = iconMidY >= containerMidY;
+
     const y = preferBelow ? anchorRect.bottom + gap : anchorRect.top - gap;
     setPos({ cx, y, below: preferBelow });
-  }, [visible, anchorRect]);
+  }, [visible, anchorRect, containerRect]);
 
   if (!visible || !pos || typeof document === "undefined") return null;
 
@@ -60,14 +76,14 @@ function PortalTooltip({
         position: "fixed",
         left: pos.cx,
         top: pos.y,
-        transform: pos.below ? "translateX(-50%)" : "translate(-50%, -100%)",
+        transform: pos.below ? "translate(-50%, 5%)" : "translate(-50%, -100%)",
         zIndex: 60,
         pointerEvents: "none",
       }}
       className={[
         "w-max max-w-[min(90vw,28rem)]",
-        "border-[color:var(--golden)] border-[1.6px]",
-        "bg-[color:var(--tooltip-bg,#1f2128)]",
+        "border-golden border-[1.6px]",
+        "bg-button",
         "px-4 py-3 shadow-lg opacity-100",
       ].join(" ")}
     >
@@ -77,32 +93,11 @@ function PortalTooltip({
         </div>
         <div className="mt-1 text-sm text-[color:var(--muted,#cfcfcf)]">{description}</div>
       </div>
-
-      {/* pointer */}
-      <span aria-hidden className="absolute left-1/2" style={{ position: "absolute", transform: "translateX(-50%)", top: pos.below ? -1 : undefined, bottom: pos.below ? undefined : -1, height: 0, width: 0 }}>
-        <span
-          className="absolute block"
-          style={{
-            width: 0, height: 0,
-            ...(pos.below
-              ? { borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderBottom: "12px solid var(--golden)", transform: "translateY(-1px)" }
-              : { borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "12px solid var(--golden)", transform: "translateY(1px)" }),
-          }}
-        />
-        <span
-          className="absolute block"
-          style={{
-            width: 0, height: 0,
-            ...(pos.below
-              ? { borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "11px solid var(--tooltip-bg, #1f2128)" }
-              : { borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "11px solid var(--tooltip-bg, #1f2128)" }),
-          }}
-        />
-      </span>
     </div>,
     document.body
   );
 }
+
 
 /* ------------ Child component so hooks aren't inside .map() ------------- */
 const IconHotspot = memo(function IconHotspot({
@@ -112,6 +107,7 @@ const IconHotspot = memo(function IconHotspot({
   leftPct,
   topPct,
   sizePct,
+  containerRect,
 }: {
   Comp: IconComp;
   label: string;
@@ -119,6 +115,7 @@ const IconHotspot = memo(function IconHotspot({
   leftPct: number;
   topPct: number;
   sizePct: number;
+  containerRect: DOMRect | null;
 }) {
   const buttonRef = useRef<HTMLDivElement | null>(null);
   const [hover, setHover] = useState(false);
@@ -142,10 +139,17 @@ const IconHotspot = memo(function IconHotspot({
       onBlur={() => setHover(false)}
     >
       <Comp className="w-full h-full text-[color:var(--golden)] transition-colors duration-150 group-hover:text-[color:var(--golden-bright,#f3d36a)]" />
-      <PortalTooltip anchorRect={rect} label={label} description={description} visible={hover} />
+      <PortalTooltip
+        anchorRect={rect}
+        label={label}
+        description={description}
+        visible={hover}
+        containerRect={containerRect}
+      />
     </div>
   );
 });
+
 
 /* ------------------------------- Main Radar ------------------------------ */
 export default function Radar({ className = "" }: { className?: string }) {
@@ -156,8 +160,24 @@ export default function Radar({ className = "" }: { className?: string }) {
   const iconCenterR = 50 - (ICON_PCT / 2 + EDGE_GAP_PCT);
   const radarInsetPct = ICON_PCT / 2 + EDGE_GAP_PCT + RING_CLEAR_PCT;
 
+  // NEW: measure the radar container
+  const radarRef = useRef<HTMLDivElement | null>(null);
+  const [containerRect, setContainerRect] = useState<DOMRect | null>(null);
+
+  useEffect(() => {
+    if (!radarRef.current) return;
+    const update = () => setContainerRect(radarRef.current!.getBoundingClientRect());
+    update();
+    window.addEventListener("resize", update);
+    window.addEventListener("scroll", update, { passive: true });
+    return () => {
+      window.removeEventListener("resize", update);
+      window.removeEventListener("scroll", update);
+    };
+  }, []);
+
   return (
-    <div className={`relative aspect-square mx-auto overflow-visible ${className}`}>
+    <div ref={radarRef} className={`relative aspect-square mx-auto overflow-visible ${className}`}>
       {/* Radar image */}
       <div className="absolute" style={{ inset: `${radarInsetPct}%` }}>
         <Image
@@ -172,7 +192,7 @@ export default function Radar({ className = "" }: { className?: string }) {
 
       {/* Icons */}
       {icons.map(({ Comp, label, description }, i) => {
-        const angle = ((START_ANGLE_DEG + i * (step)) * Math.PI) / 180;
+        const angle = ((START_ANGLE_DEG + i * step) * Math.PI) / 180;
         const x = 50 + Math.cos(angle) * iconCenterR;
         const y = 50 + Math.sin(angle) * iconCenterR;
 
@@ -185,6 +205,7 @@ export default function Radar({ className = "" }: { className?: string }) {
             leftPct={x}
             topPct={y}
             sizePct={ICON_PCT}
+            containerRect={containerRect}
           />
         );
       })}

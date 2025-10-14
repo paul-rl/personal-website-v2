@@ -14,13 +14,9 @@ type InfoSectionProps = {
 };
 
 export default function InfoSection({
-  focus = "Full-Stack",
+  focus = "AI + Game Dev",
   percent = 0.4,
   mastery = 2,
-  radar = {
-    labels: ["Communication", "Collaboration", "Ownership", "Adaptability", "Initiative"],
-    values: [0.7, 0.5, 0.3, 0.6, 0.8],
-  },
   className = "",
 }: InfoSectionProps) {
   return (
@@ -32,7 +28,7 @@ export default function InfoSection({
           <div className="font-serif font-bold text-subhead text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
             FOCUS:
           </div>
-          <div className="font-sans text-cream text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
+          <div className="font-sans text-golden text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
             {focus}
           </div>
         </div>
@@ -65,12 +61,12 @@ export default function InfoSection({
 function StyleSlider({ position }: { position: number }) {
   const p = Math.max(0, Math.min(1, position));
   return (
-    <div className="flex items-center gap-[.5rem] pointer-events-none select-none">
-      <ComputerIcon className="w-[2rem] h-[2rem] text-cream" />
+    <div className="flex items-center gap-[.5rem] pointer-events-none select-none text-golden">
+      <ComputerIcon className="w-[2rem] h-[2rem]" />
 
       {/* Flexible track fills remaining space */}
       <div className="relative flex-1">
-        <div className="relative w-full h-[3px] bg-cream">
+        <div className="relative w-full h-[3px] bg-golden">
           {/* side padding equals knob radius (8px) */}
           <div className="absolute inset-0 px-2">
             <div
@@ -86,7 +82,7 @@ function StyleSlider({ position }: { position: number }) {
         </div>
       </div>
 
-      <PaletteIcon className="w-[2rem] h-[2rem] text-cream" />
+      <PaletteIcon className="w-[2rem] h-[2rem]" />
     </div>
   );
 }
