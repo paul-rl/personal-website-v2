@@ -1,5 +1,6 @@
-import ComputerIcon from "@/app/components/icons/ComputerIcon"
-import PaletteIcon from "@/app/components/icons/PaletteIcon"
+import ComputerIcon from "@/app/components/icons/Computer"
+import PaletteIcon from "@/app/components/icons/Palette"
+import Radar from "@/app/components/sidebar/Radar";
 
 type InfoSectionProps = {
   focus?: string;
@@ -13,17 +14,13 @@ type InfoSectionProps = {
 };
 
 export default function InfoSection({
-  focus = "Full-Stack",
+  focus = "AI + Game Dev",
   percent = 0.4,
   mastery = 2,
-  radar = {
-    labels: ["Damage", "Toughness", "Control", "Mobility", "Utility"],
-    values: [0.7, 0.5, 0.3, 0.6, 0.8],
-  },
   className = "",
 }: InfoSectionProps) {
   return (
-    <section className={`flex items-center gap-[5rem] select-none ${className}`}>
+    <section className={`flex flex-col md:flex-row md:items-center gap-6 md:gap-16 ${className}`}>
       {/* Left: Info Stack */}
       <div className="min-w-[10rem] flex-1 space-y-4">
         {/* FOCUS */}
@@ -31,7 +28,7 @@ export default function InfoSection({
           <div className="font-serif font-bold text-subhead text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
             FOCUS:
           </div>
-          <div className="font-sans text-cream text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
+          <div className="font-sans text-golden text-[clamp(1rem,1vw+0.5rem,1.38rem)]">
             {focus}
           </div>
         </div>
@@ -53,23 +50,9 @@ export default function InfoSection({
         </div>
       </div>
 
-      {/* Right: Circle placeholder */}
+      {/* Right: Radar */}
       <div className="relative w-[clamp(160px,38vw,320px)] aspect-square">
-        <svg
-          viewBox="0 0 100 100"
-          className="absolute inset-0 w-full h-full"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <circle
-            cx="50"
-            cy="50"
-            r="48"
-            fill="none"
-            className="stroke-white"
-            strokeWidth={2}
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
+        <Radar/>
       </div>
     </section>
   );
@@ -78,12 +61,12 @@ export default function InfoSection({
 function StyleSlider({ position }: { position: number }) {
   const p = Math.max(0, Math.min(1, position));
   return (
-    <div className="flex items-center gap-[.5rem] pointer-events-none select-none">
-      <ComputerIcon className="w-[2rem] h-[2rem] text-cream" />
+    <div className="flex items-center gap-[.5rem] pointer-events-none select-none text-golden">
+      <ComputerIcon className="w-[2rem] h-[2rem]" />
 
       {/* Flexible track fills remaining space */}
       <div className="relative flex-1">
-        <div className="relative w-full h-[3px] bg-cream">
+        <div className="relative w-full h-[3px] bg-golden">
           {/* side padding equals knob radius (8px) */}
           <div className="absolute inset-0 px-2">
             <div
@@ -99,7 +82,7 @@ function StyleSlider({ position }: { position: number }) {
         </div>
       </div>
 
-      <PaletteIcon className="w-[2rem] h-[2rem] text-cream" />
+      <PaletteIcon className="w-[2rem] h-[2rem]" />
     </div>
   );
 }

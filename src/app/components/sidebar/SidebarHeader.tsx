@@ -29,7 +29,7 @@ export default function SidebarHeader({
 
       {/* Name and subtitle */}
       <div className="min-w-0 flex-1">
-        <h1 className="whitespace-nowrap leading-none 
+        <h1 className=" leading-none 
                        font-serif font-bold 
                        text-cream text-[clamp(1.75rem,2.5vw+1rem,2.44rem)]">
           {name}
