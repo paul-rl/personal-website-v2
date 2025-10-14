@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import type { ComponentType, SVGProps } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, memo } from "react";
 import { createPortal } from "react-dom";
 
 import Adaptability from "@/app/components/icons/radar/Adaptability";
@@ -28,7 +28,7 @@ const ICON_PCT        = 12;
 const EDGE_GAP_PCT    = 1;
 const RING_CLEAR_PCT  = 4;
 
-/* ---------- Tooltip shown in a portal so it never gets clipped ---------- */
+/* ---------- Tooltip in a portal (unchanged) ---------- */
 function PortalTooltip({
   anchorRect,
   label,
@@ -46,7 +46,6 @@ function PortalTooltip({
     if (!visible || !anchorRect) return;
     const gap = 12;
     const cx = anchorRect.left + anchorRect.width / 2;
-    // flip if there isn't ~120px above; otherwise stay above by default
     const preferBelow = anchorRect.top < 120;
     const y = preferBelow ? anchorRect.bottom + gap : anchorRect.top - gap;
     setPos({ cx, y, below: preferBelow });
@@ -59,14 +58,14 @@ function PortalTooltip({
       role="tooltip"
       style={{
         position: "fixed",
-        left: pos.cx,                // center on icon
+        left: pos.cx,
         top: pos.y,
         transform: pos.below ? "translateX(-50%)" : "translate(-50%, -100%)",
         zIndex: 60,
         pointerEvents: "none",
       }}
       className={[
-        "w-max max-w-[min(90vw,28rem)]", // may overflow if text is super long; still centered
+        "w-max max-w-[min(90vw,28rem)]",
         "border-[color:var(--golden)] border-[1.6px]",
         "bg-[color:var(--tooltip-bg,#1f2128)]",
         "px-4 py-3 shadow-lg opacity-100",
@@ -76,59 +75,27 @@ function PortalTooltip({
         <div className="font-semibold tracking-wide text-[var(--cream,#e6e6e6)] uppercase">
           {label}
         </div>
-        <div className="mt-1 text-sm text-[color:var(--muted,#cfcfcf)]">
-          {description}
-        </div>
+        <div className="mt-1 text-sm text-[color:var(--muted,#cfcfcf)]">{description}</div>
       </div>
 
-      {/* pointer perfectly centered under/over box, attached, gold sides only */}
-      <span
-        aria-hidden
-        className="absolute left-1/2"
-        style={{
-          position: "absolute",
-          transform: "translateX(-50%)",
-          top: pos.below ? -1 : undefined,
-          bottom: pos.below ? undefined : -1,
-          height: 0, width: 0,
-        }}
-      >
-        {/* outer gold */}
+      {/* pointer */}
+      <span aria-hidden className="absolute left-1/2" style={{ position: "absolute", transform: "translateX(-50%)", top: pos.below ? -1 : undefined, bottom: pos.below ? undefined : -1, height: 0, width: 0 }}>
         <span
           className="absolute block"
           style={{
             width: 0, height: 0,
             ...(pos.below
-              ? {
-                  borderLeft: "10px solid transparent",
-                  borderRight: "10px solid transparent",
-                  borderBottom: "12px solid var(--golden)",
-                  transform: "translateY(-1px)", // hide top edge under box
-                }
-              : {
-                  borderLeft: "10px solid transparent",
-                  borderRight: "10px solid transparent",
-                  borderTop: "12px solid var(--golden)",
-                  transform: "translateY(1px)",  // hide top edge under box
-                }),
+              ? { borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderBottom: "12px solid var(--golden)", transform: "translateY(-1px)" }
+              : { borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "12px solid var(--golden)", transform: "translateY(1px)" }),
           }}
         />
-        {/* inner fill */}
         <span
           className="absolute block"
           style={{
             width: 0, height: 0,
             ...(pos.below
-              ? {
-                  borderLeft: "9px solid transparent",
-                  borderRight: "9px solid transparent",
-                  borderBottom: "11px solid var(--tooltip-bg, #1f2128)",
-                }
-              : {
-                  borderLeft: "9px solid transparent",
-                  borderRight: "9px solid transparent",
-                  borderTop: "11px solid var(--tooltip-bg, #1f2128)",
-                }),
+              ? { borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "11px solid var(--tooltip-bg, #1f2128)" }
+              : { borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "11px solid var(--tooltip-bg, #1f2128)" }),
           }}
         />
       </span>
@@ -137,13 +104,53 @@ function PortalTooltip({
   );
 }
 
+/* ------------ Child component so hooks aren't inside .map() ------------- */
+const IconHotspot = memo(function IconHotspot({
+  Comp,
+  label,
+  description,
+  leftPct,
+  topPct,
+  sizePct,
+}: {
+  Comp: IconComp;
+  label: string;
+  description: string;
+  leftPct: number;
+  topPct: number;
+  sizePct: number;
+}) {
+  const buttonRef = useRef<HTMLDivElement | null>(null);
+  const [hover, setHover] = useState(false);
+  const [rect, setRect] = useState<DOMRect | null>(null);
 
+  useEffect(() => {
+    if (!hover || !buttonRef.current) return;
+    setRect(buttonRef.current.getBoundingClientRect());
+  }, [hover]);
+
+  return (
+    <div
+      ref={buttonRef}
+      className="group absolute z-10 -translate-x-1/2 -translate-y-1/2"
+      style={{ left: `${leftPct}%`, top: `${topPct}%`, width: `${sizePct}%`, height: `${sizePct}%` }}
+      role="button"
+      aria-label={label}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onFocus={() => setHover(true)}
+      onBlur={() => setHover(false)}
+    >
+      <Comp className="w-full h-full text-[color:var(--golden)] transition-colors duration-150 group-hover:text-[color:var(--golden-bright,#f3d36a)]" />
+      <PortalTooltip anchorRect={rect} label={label} description={description} visible={hover} />
+    </div>
+  );
+});
 
 /* ------------------------------- Main Radar ------------------------------ */
 export default function Radar({ className = "" }: { className?: string }) {
   const COUNT = 5;
   const step = 360 / COUNT;
-
   const icons = Array.from({ length: COUNT }, (_, i) => ICONS[i % ICONS.length]);
 
   const iconCenterR = 50 - (ICON_PCT / 2 + EDGE_GAP_PCT);
@@ -165,52 +172,20 @@ export default function Radar({ className = "" }: { className?: string }) {
 
       {/* Icons */}
       {icons.map(({ Comp, label, description }, i) => {
-        const angle = ((START_ANGLE_DEG + i * step) * Math.PI) / 180;
+        const angle = ((START_ANGLE_DEG + i * (step)) * Math.PI) / 180;
         const x = 50 + Math.cos(angle) * iconCenterR;
         const y = 50 + Math.sin(angle) * iconCenterR;
 
-        // local hover state for portal tooltip
-        const buttonRef = useRef<HTMLDivElement | null>(null);
-        const [hover, setHover] = useState(false);
-        const [rect, setRect] = useState<DOMRect | null>(null);
-
-        useEffect(() => {
-          if (!hover || !buttonRef.current) return;
-          const r = buttonRef.current.getBoundingClientRect();
-          setRect(r);
-        }, [hover]);
-
         return (
-          <div
+          <IconHotspot
             key={`${label}-${i}`}
-            ref={buttonRef}
-            className="group absolute z-10 -translate-x-1/2 -translate-y-1/2"
-            style={{
-              left: `${x}%`,
-              top: `${y}%`,
-              width: `${ICON_PCT}%`,
-              height: `${ICON_PCT}%`,
-            }}
-            role="button"
-            aria-label={label}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            onFocus={() => setHover(true)}
-            onBlur={() => setHover(false)}
-          >
-            {/* ICON — brighter on hover (with fallback color) */}
-            <Comp
-              className="w-full h-full text-[color:var(--golden)] transition-colors duration-150 group-hover:text-[color:var(--golden-bright,#f3d36a)]"
-            />
-
-            {/* Portal tooltip (never clipped) */}
-            <PortalTooltip
-              anchorRect={rect}
-              label={label}
-              description={description}
-              visible={hover}
-            />
-          </div>
+            Comp={Comp}
+            label={label}
+            description={description}
+            leftPct={x}
+            topPct={y}
+            sizePct={ICON_PCT}
+          />
         );
       })}
     </div>
