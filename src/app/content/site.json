@@ -45,14 +45,16 @@
     },
     {
       "title": "Steam Recommendation Engine",
-      "image": "/images/projects/file.svg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo risus, semper sed nulla eu, interdum suscipit sapien. Proin maximus vel orci ac euismod. Quisque nec lacus ullamcorper, cursus orci a, ullamcorper mauris. In non interdum neque. Phasellus blandit mauris lacus, nec maximus tellus pretium vitae. Praesent urna lacus, interdum non ultrices at, porta scelerisque ligula. Sed eros velit, vulputate non pretium ac, gravida at lorem. In posuere in ex non condimentum.",
+      "image": "/images/projects/steam.jpg",
+      "description": "A peek behind Steam's discovery queue turned hands-on ML lab. I built a sequence-aware recommender with a SASRec Transformer and learned the habits that actually move the needle: evaluating on a store-like slate, keeping histories chronological, and the power of careful masking. From there, the fun was in the tinkering: swapping signals, rerunning vectorized scorers, and seeing the ranking shifts. Turns out raw counts can be problematic, but it's nothing normalization can't solve.",
       "tags": {
-        "tag-1": "Python",
-        "tag-2": "SASRec",
-        "tag-3": "PyTorch"
+        "tag-1": "PyTorch",
+        "tag-2": "Transformers (SASRec)",
+        "tag-3": "PyTorch",
+        "tag-4": "NumPy",
+        "tag-5": "Sequential Recommendation"
       },
-      "link": "https://github.com/paul-rl/Groundbreak/"
+      "link": "https://github.com/paul-rl/Steam-Recommendation-Engine"
     },
     {
       "title": "Personal Website",
