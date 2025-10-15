@@ -39,7 +39,7 @@ export default function ItemShowcase({
       ].join(" ")}
     >
       {/* Stage: fixed responsive slot (keeps text below from shifting) */}
-      <div className="relative mx-auto h-[clamp(400px,calc(0.9375*100vh-468px),550px)] w-full mb-2">
+      <div className="relative mx-auto h-[clamp(400px,calc(0.9375*100vh-468px),520px)] w-full mb-[.5rem]">
         <div className="absolute inset-0 flex items-center justify-center">
           <img
             src={imageSrc}
@@ -53,7 +53,7 @@ export default function ItemShowcase({
       </div>
 
       {/* Title: sans, italic, responsive, centered, cream */}
-      <h2 className="italic text-cream leading-tight text-center [font-size:clamp(1.5rem,3.5vw,2rem)]">
+      <h2 className="italic text-cream leading-tight text-center [font-size:clamp(1.5rem,3.5vw,2rem)] mb-[.5rem]">
         <a
           href={link}
           target="_blank"
@@ -83,16 +83,15 @@ export default function ItemShowcase({
         </a>
       </h2>
 
-
       {/* Body: fixed size, centered, configurable width */}
       <p
-        className="mx-auto text-body text-left leading-relaxed text-base"
+        className="mx-auto text-body text-left leading-relaxed text-base mb-[1rem]"
         style={{ maxWidth: textMaxWidth }}
       >
         {description}
       </p>
       {validTags && (
-        <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-[1rem]">
           {tags.map((t, i) => (
             <Tag key={`${t}-${i}`} label={t} />
           ))}

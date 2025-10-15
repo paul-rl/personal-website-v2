@@ -26,7 +26,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col items-center w-full px-[clamp(1rem,2vw,3rem)] mx-auto font-sans text-cream">
       {/* Header Tabs */}
       <HeaderTabs
-        className="py-6 justify-center"
+        className="mt-2 justify-center"
         active={activeTab}
         onChange={(tab) => {
           setActiveTab(tab);
