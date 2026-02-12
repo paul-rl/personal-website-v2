@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import { Cinzel, Roboto } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/app/components/sidebar/Sidebar";
@@ -52,6 +53,7 @@ export default async function RootLayout({
             </main>
           </div>
         </SiteDataProvider>
+        <Analytics />
       </body>
     </html>
   );
