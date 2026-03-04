@@ -14,7 +14,7 @@ type InfoSectionProps = {
 };
 
 export default function InfoSection({
-  focus = "AI + Game Dev",
+  focus = "AI + SWE",
   percent = 0.4,
   mastery = 2,
   className = "",
