@@ -2,8 +2,8 @@
 
 type HeaderTabsProps = {
   className?: string;
-  active: "projects" | "about";
-  onChange: (tab: "projects" | "about") => void;
+  active: "projects" | "about" | "albumclub";
+  onChange: (tab: "projects" | "about" | "albumclub") => void;
 };
 
 export default function HeaderTabs({ className = "", active = "projects", onChange }: HeaderTabsProps) {
@@ -20,6 +20,16 @@ export default function HeaderTabs({ className = "", active = "projects", onChan
         Projects
       </button>
 
+      <button
+        onClick={() => onChange("albumclub")}
+        className={`uppercase tracking-wide transition-colors ${
+          active === "albumclub"
+            ? "text-golden border-b border-golden pb-[2px]"
+            : "text-cream hover:text-golden cursor-pointer"
+        }`}
+      >
+        Album Club
+      </button>
       <button
         onClick={() => onChange("about")}
         className={`uppercase tracking-wide transition-colors ${

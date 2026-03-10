@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { AlbumTierList } from "./albumData"; 
 
 export type SiteProject = {
   title: string;
@@ -25,6 +26,7 @@ export type SiteData = {
   contactMe: string;  // mailto
   projects: SiteProject[];
   hobbies: SiteHobby[];
+  albumClub: AlbumTierList[];  
 };
 
 /** Read and normalize the raw JSON with the “_string_ / _path_” placeholders */

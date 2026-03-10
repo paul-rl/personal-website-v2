@@ -13,13 +13,21 @@ export default function Home() {
   const data = useSiteData();
 
   // Which header tab is active
-  const [activeTab, setActiveTab] = useState<"projects" | "about">("projects");
+  const [activeTab, setActiveTab] = useState<"projects" | "about" | "albumclub">("projects");
 
   // Current active slide index (used by whichever carousel is visible)
   const [activeIdx, setActiveIdx] = useState(0);
 
   // Dynamically choose content set (projects or hobbies)
-  const items = activeTab === "projects" ? data.projects : data.hobbies;
+  const items = (() => {
+    switch(activeTab) {
+      case "projects": return data.projects;
+      case "albumclub": return data.albumClub ?? [];
+      case "about": return data.hobbies;
+      default: return [];
+    }
+  })();
+  
   const activeItem = items[activeIdx] ?? items[0];
 
   return (
@@ -45,17 +53,32 @@ export default function Home() {
           tags={hasTags(activeItem) ? activeItem.tags : []}
         />
       )}
-      {activeTab === "projects" ? (
-        <ProjectsCarousel
-          className="w-full max-w-[min(94vw,1200px)] mx-auto"
-          onActiveChange={(_, i) => setActiveIdx(i)}
-        />
-      ) : (
-        <HobbiesCarousel
-          className="w-full max-w-[min(94vw,1200px)] mx-auto"
-          onActiveChange={(_, i) => setActiveIdx(i)}
-        />
-      )}
+      {(() => {
+        switch (activeTab) {
+          case "projects":
+            return (
+              <ProjectsCarousel
+              className="w-full max-w-[min(94vw,1200px)] mx-auto"
+              onActiveChange={(_, i) => setActiveIdx(i)}
+              />
+            );
+          case "about":
+            return (
+              <HobbiesCarousel
+                className="w-full max-w-[min(94vw,1200px)] mx-auto"
+                onActiveChange={(_, i) => setActiveIdx(i)}
+              />
+            );
+          case "albumclub":
+            return (
+              <HobbiesCarousel
+                className="w-full max-w-[min(20vw,300px)] mx-auto"
+                onActiveChange={(_, i) => setActiveIdx(i)}
+              />
+            );
+        }
+        })()
+      }
     </div>
   );
 }
