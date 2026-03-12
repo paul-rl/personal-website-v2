@@ -1,9 +1,10 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
+import Image from "next/image";
 
 interface BaseItem {
   id: string;
   name: string;
-  image: string | null; // image URL
+  image: string; // image URL
 }
 
 interface UnrankedItem {
@@ -12,7 +13,6 @@ interface UnrankedItem {
 
 interface RankedItem {
   ranked: true;
-  position: number;
   tierId: string;
 }
 
@@ -23,8 +23,37 @@ type Item =
 interface ItemProps {
   item: Item;
   isDragging: boolean;
-  onDragStart: (itemId:string) => void;
+  onDragStart: (itemId: string) => void;
   onDragEnd: () => void;
+  onDrop: () => void;
+}
+
+function ItemCard({ item, isDragging, onDragStart, onDragEnd,  onDrop}: ItemProps) {
+  return (
+    <div
+      className={isDragging? "opacity-50": ""}
+      draggable="true"
+      onDragOver={(e) => e.preventDefault()}
+      onDragStart={() => onDragStart(item.id)}
+      onDragEnd={onDragEnd}
+      onDrop={(e) => { e.stopPropagation(); onDrop(); }}
+    >
+        {item.image !== "" ? 
+        (
+          <Image
+            src={item.image}
+            alt={item.name}
+            width={64}
+            height={64}
+            className="object-cover"
+            unoptimized={/\.(gif)$/i.test(item.image)}
+            priority
+          />
+        ) : (
+          <div className="flex flex-wrap">{item.name}</div>
+        )}
+    </div>
+  );
 }
 
 interface Tier {
@@ -60,12 +89,12 @@ export default function Tierlist() {
 ]));
 
 const [items, setItems] = useState<Item[]>([
-  { id: "1", name: "Kid A", image: null, ranked: true, tierId: "s", position: 0 },
-  { id: "2", name: "Blonde", image: null, ranked: true, tierId: "a", position: 0 },
-  { id: "3", name: "Vespertine", image: null, ranked: true, tierId: "b", position: 0 },
-  { id: "4", name: "Madvillainy", image: null, ranked: false },
-  { id: "5", name: "In Rainbows", image: null, ranked: false },
-  { id: "6", name: "Titanic Rising", image: null, ranked: false },
+  { id: "1", name: "Kid A", image: "/images/covers/kida.png", ranked: true, tierId: "s"},
+  { id: "2", name: "Blonde", image: "/images/covers/blonde.jpeg", ranked: true, tierId: "a"},
+  { id: "3", name: "Vespertine", image: "/images/covers/vespertine.png", ranked: true, tierId: "b"},
+  { id: "4", name: "Madvillainy", image: "/images/covers/madvillainy.png", ranked: false },
+  { id: "5", name: "In Rainbows", image: "/images/covers/inrainbows.png", ranked: false },
+  { id: "6", name: "Titanic Rising", image: "", ranked: false },
 ]);
 
   const [hoveredTierId, setHoveredTierId] = useState<string | null>(null);
@@ -116,24 +145,32 @@ const [items, setItems] = useState<Item[]>([
     setHoveredTierId(null);
   };
 
-  const handleTierOnItemDrop = (tierId: string) => {
+  const handleTierOnItemDrop = (tierId: string, targetItemId: string) => {
     // item in draggedId should be added to tier
     if (draggingId !== null) {
       if (tiers.has(tierId)) {
-        setItems(prev => prev.map((itm: Item): Item => {
-          if (draggingId === itm.id){
-            return {
-              ...itm,
-              ranked: true,
-              tierId: tierId,
-              position: 0, // TODO
-            };
-            } else {
-              return itm;
-            }
-          }))
-      } else {
-        console.log("Error!! Tier with tierId " + tierId + " not found!")
+
+        let items_copy: Item[] = items.filter((itm: Item) => {return itm.id !== draggingId})
+        let to_move: Item[] = items.filter((itm: Item) => {return itm.id === draggingId})
+        let to_insert:Item = {
+          ...to_move[0],
+          ranked: true,
+          tierId: tierId
+        }
+        
+
+        let targetIdx: number = items.findIndex((itm: Item) => {return targetItemId === itm.id});
+        const currIdx: number = items.findIndex((itm: Item) => {return draggingId === itm.id});
+        
+        let offset: number =  currIdx < targetIdx ? 1: 0;
+        targetIdx = items_copy.findIndex((itm: Item) => {return targetItemId === itm.id});
+        if (targetIdx === -1) {
+          items_copy.push(to_insert);
+        } else {
+          items_copy.splice(targetIdx + offset, 0, to_insert);
+        }
+        
+        setItems(items_copy);
       }
 
       // draggedId should be cleared
@@ -186,18 +223,18 @@ const [items, setItems] = useState<Item[]>([
               onDragOver={(e) => e.preventDefault()}
               onDragEnter={() => handleTierOnDragEnter(tier.id)}
               onDragLeave={() => handleTierOnDragLeave()}
-              onDrop={() => handleTierOnItemDrop(tier.id)}
+              onDrop={() => handleTierOnItemDrop(tier.id, "")}
             > {/* placement section */}
               {items.map((item) => {
                 if (item.ranked && item.tierId === tier.id) {
-                  return <div 
+                  return <ItemCard
                             key={item.id}
-                            draggable="true"
-                            onDragStart={() => handleItemOnDragStart(item.id)}
-                            onDragEnd={() => handleItemOnDragEnd()}
-                          >
-                            {item.name}
-                          </div>;
+                            item={item}
+                            isDragging={draggingId === item.id}
+                            onDragStart={handleItemOnDragStart}
+                            onDragEnd={handleItemOnDragEnd}
+                            onDrop={() => handleTierOnItemDrop(tier.id, item.id)}
+                         />              
                 }
                 return null;
               })}
@@ -213,20 +250,19 @@ const [items, setItems] = useState<Item[]>([
         >
           {items.map((item) => {
             if (!item.ranked) {
-              return <div 
-                        key={item.id}
-                        draggable="true"
-                        onDragStart={() => handleItemOnDragStart(item.id)}
-                        onDragEnd={() => handleItemOnDragEnd()}
-                      >
-                        {item.name}
-                      </div>;
+              return <ItemCard
+                            key={item.id}
+                            item={item}
+                            isDragging={draggingId === item.id}
+                            onDragStart={handleItemOnDragStart}
+                            onDragEnd={handleItemOnDragEnd}
+                            onDrop={() => handleUnrankedOnItemDrop()}
+                         />  
             }
             return null;
           })}
         </div>
       </div>
-      
     </div>
   )
 }
