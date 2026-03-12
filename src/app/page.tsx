@@ -5,6 +5,7 @@ import { useSiteData } from "@/app/components/SiteDataContext";
 import HeaderTabs from "@/app/components/main_page/HeaderTabs";
 import ProjectsCarousel from "@/app/components/main_page/carousels/ProjectsCarousel";
 import HobbiesCarousel from "@/app/components/main_page/carousels/HobbiesCarousel";
+import Tierlist from "@/app/components/main_page/carousels/Tierlist";
 import ItemShowcase from "@/app/components/main_page/ItemShowcase";
 import { SiteProject } from "./lib/siteData";
 import hasTags from "@/app/utils/hasTags";
@@ -71,10 +72,7 @@ export default function Home() {
             );
           case "albumclub":
             return (
-              <HobbiesCarousel
-                className="w-full max-w-[min(20vw,300px)] mx-auto"
-                onActiveChange={(_, i) => setActiveIdx(i)}
-              />
+              <Tierlist/>
             );
         }
         })()
