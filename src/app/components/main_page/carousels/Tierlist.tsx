@@ -92,15 +92,16 @@ function TierSection({
     return (
       <div 
             key={tier.id} 
-            className="flex flex-row justify-start"> {/* tier */}
+            className="flex flex-row justify-start w-full"> {/* tier */}
             <div
               style={{backgroundColor: tier.color}}
               onClick={() => onLabelEditRequest(tier.id)}
+              className="w-16"
             > {/* label */}
               <p>{tier.label}</p>
             </div>
             <div
-              className="flex flex-wrap bg-gray-800 min-h-[48px] w-[400px]"
+              className="flex-1 flex-wrap bg-gray-800 min-h-[48px]"
               onDragOver={(e) => e.preventDefault()}
               onDragEnter={() => onDragEnter(tier.id)}
               onDragLeave={() => onDragLeave()}
@@ -269,8 +270,20 @@ const [items, setItems] = useState<Item[]>([
       <h1 className="italic text-cream leading-tight text-center"> {/*title*/}
         <span>{"Album Club"}</span>
       </h1>
-      <div className="relative flex flex-col justify-start flex-wrap items-center"> {/* tiers section */}
-        
+      <div className="relative mx-auto flex flex-col justify-start flex-wrap items-center w-full max-w-xl"> {/* tiers section */}
+        {tierEditingId && 
+        <div className="flex-col items-center justify-center absolute inset-0 z-50 bg-black/50">
+          <input type="text" id="label" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="John" required />
+          <input
+  type="color"
+  id="color-select"
+  className="mt-1 h-10 w-16 p-0 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 hover:cursor-pointer"
+/>
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Red Button
+          </button>
+
+        </div>}
         { Array.from(tiers.values()).map((tier) => (
           <TierSection
             key={tier.id}
@@ -286,7 +299,7 @@ const [items, setItems] = useState<Item[]>([
           />))
         }
         <div
-            className="flex flex-wrap bg-gray-800 min-h-[48px] w-[400px]"
+            className="flex flex-wrap bg-gray-800 min-h-[48px] w-full"
             onDragOver={(e) => e.preventDefault()}
             onDragEnter={() => handleTierOnDragEnter(null)}
             onDragLeave={() => handleTierOnDragLeave()}
