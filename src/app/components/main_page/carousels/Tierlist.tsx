@@ -20,6 +20,11 @@ type Item =
   | (BaseItem & UnrankedItem)
   | (BaseItem & RankedItem);
 
+type LabelData = {
+  label: string,
+  color: string
+}
+
 interface ItemProps {
   item: Item;
   isDragging: boolean;
@@ -65,14 +70,59 @@ interface Tier {
 interface TierProps {
   tier: Tier;
   items: Item[];
+  draggingId: string | null;
+  itemOnDragStart: (itemId: string) => void; 
+  itemOnDragEnd: () => void;
   onLabelEditRequest: (tierId: string) => void;
   onDragEnter: (tierId: string) => void;
   onDragLeave: () => void;
-  onItemDrop:  (tierId: string) => void;
+  onItemDrop:  (tierId: string, itemId: string) => void;
 }
 
-
-
+function TierSection({
+  tier, 
+  items,
+  draggingId, 
+  itemOnDragStart, 
+  itemOnDragEnd, 
+  onLabelEditRequest, 
+  onDragEnter, 
+  onDragLeave, 
+  onItemDrop}: TierProps){
+    return (
+      <div 
+            key={tier.id} 
+            className="flex flex-row justify-start"> {/* tier */}
+            <div
+              style={{backgroundColor: tier.color}}
+              onClick={() => onLabelEditRequest(tier.id)}
+            > {/* label */}
+              <p>{tier.label}</p>
+            </div>
+            <div
+              className="flex flex-wrap bg-gray-800 min-h-[48px] w-[400px]"
+              onDragOver={(e) => e.preventDefault()}
+              onDragEnter={() => onDragEnter(tier.id)}
+              onDragLeave={() => onDragLeave()}
+              onDrop={() => onItemDrop(tier.id, "")}
+            > {/* placement section */}
+              {items.map((item) => {
+                if (item.ranked && item.tierId === tier.id) {
+                  return <ItemCard
+                            key={item.id}
+                            item={item}
+                            isDragging={draggingId === item.id}
+                            onDragStart={itemOnDragStart}
+                            onDragEnd={itemOnDragEnd}
+                            onDrop={() => onItemDrop(tier.id, item.id)}
+                         />              
+                }
+                return null;
+              })}
+            </div>
+          </div>
+    )
+}
 
 export default function Tierlist() { 
   const [currUser, setUser] = useState<string | null>(
@@ -100,6 +150,7 @@ const [items, setItems] = useState<Item[]>([
   const [hoveredTierId, setHoveredTierId] = useState<string | null>(null);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [tierEditingId, setTierEditingId] = useState<string | null>(null);
+  const [draftLabelData, setDraftLabelData] = useState<LabelData>({label: "", color: ""});
 
   const handleItemOnDragStart = (itemId:string) => {
       // When an item starts being dragged, it's edges should be highlighted, and the item
@@ -117,6 +168,14 @@ const [items, setItems] = useState<Item[]>([
   };
 
   const handleTierOnLabelEditRequest = (tierId: string) => {
+    console.log("Wow!")
+    let tier: Tier | undefined = tiers.get(tierId);
+    if (tier) {
+      setDraftLabelData({label: tier.label, color: tier.color});
+    } else {
+      console.log("Error! Invalid tier trying to be edited!");
+    }
+
     setTierEditingId(tierId);
   };
 
@@ -210,36 +269,21 @@ const [items, setItems] = useState<Item[]>([
       <h1 className="italic text-cream leading-tight text-center"> {/*title*/}
         <span>{"Album Club"}</span>
       </h1>
-      <div className="flex flex-col justify-start flex-wrap items-center"> {/* tiers section */}
+      <div className="relative flex flex-col justify-start flex-wrap items-center"> {/* tiers section */}
+        
         { Array.from(tiers.values()).map((tier) => (
-          <div key={tier.id} className="flex flex-row justify-start"> {/* tier */}
-            <div
-              style={{backgroundColor: tier.color}}
-            > {/* label */}
-            <p>{tier.label}</p>
-            </div>
-            <div
-              className="flex flex-wrap bg-gray-800 min-h-[48px] w-[400px]"
-              onDragOver={(e) => e.preventDefault()}
-              onDragEnter={() => handleTierOnDragEnter(tier.id)}
-              onDragLeave={() => handleTierOnDragLeave()}
-              onDrop={() => handleTierOnItemDrop(tier.id, "")}
-            > {/* placement section */}
-              {items.map((item) => {
-                if (item.ranked && item.tierId === tier.id) {
-                  return <ItemCard
-                            key={item.id}
-                            item={item}
-                            isDragging={draggingId === item.id}
-                            onDragStart={handleItemOnDragStart}
-                            onDragEnd={handleItemOnDragEnd}
-                            onDrop={() => handleTierOnItemDrop(tier.id, item.id)}
-                         />              
-                }
-                return null;
-              })}
-            </div>
-          </div>))
+          <TierSection
+            key={tier.id}
+            tier={tier}
+            items={items}
+            draggingId={draggingId}
+            itemOnDragStart={handleItemOnDragStart}
+            itemOnDragEnd={handleItemOnDragEnd}
+            onLabelEditRequest={handleTierOnLabelEditRequest}
+            onDragEnter={handleTierOnDragEnter}
+            onDragLeave={handleTierOnDragLeave}
+            onItemDrop={handleTierOnItemDrop}
+          />))
         }
         <div
             className="flex flex-wrap bg-gray-800 min-h-[48px] w-[400px]"
