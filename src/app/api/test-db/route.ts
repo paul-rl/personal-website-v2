@@ -1,6 +1,8 @@
-import { supabase } from "@/app/lib/supabase";
+import { getSupabase } from "@/app/lib/supabase";
+import { SupabaseClient } from "@supabase/supabase-js";
 
 export async function GET() {
+  const supabase:SupabaseClient = getSupabase()
   const { data, error } = await supabase.from("albums").select("*");
   
   if (error) {
