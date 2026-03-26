@@ -170,7 +170,7 @@ const [items, setItems] = useState<Item[]>([
 
   const handleTierOnLabelEditRequest = (tierId: string) => {
     console.log("Wow!")
-    let tier: Tier | undefined = tiers.get(tierId);
+    const tier: Tier | undefined = tiers.get(tierId);
     if (tier) {
       setDraftLabelData({label: tier.label, color: tier.color});
     } else {
@@ -184,7 +184,7 @@ const [items, setItems] = useState<Item[]>([
     // change Tier object to update color, label
     if (tiers.has(tierId)){
       setTiers(prev => {
-        let updated: Map<string, Tier> = new Map(prev);
+        const updated: Map<string, Tier> = new Map(prev);
         updated.set(tierId, {
           id: tierId,
           color: color,
@@ -210,9 +210,9 @@ const [items, setItems] = useState<Item[]>([
     if (draggingId !== null) {
       if (tiers.has(tierId)) {
 
-        let items_copy: Item[] = items.filter((itm: Item) => {return itm.id !== draggingId})
-        let to_move: Item[] = items.filter((itm: Item) => {return itm.id === draggingId})
-        let to_insert:Item = {
+        const items_copy: Item[] = items.filter((itm: Item) => {return itm.id !== draggingId})
+        const to_move: Item[] = items.filter((itm: Item) => {return itm.id === draggingId})
+        const to_insert:Item = {
           ...to_move[0],
           ranked: true,
           tierId: tierId
@@ -222,7 +222,7 @@ const [items, setItems] = useState<Item[]>([
         let targetIdx: number = items.findIndex((itm: Item) => {return targetItemId === itm.id});
         const currIdx: number = items.findIndex((itm: Item) => {return draggingId === itm.id});
         
-        let offset: number =  currIdx < targetIdx ? 1: 0;
+        const offset: number =  currIdx < targetIdx ? 1: 0;
         targetIdx = items_copy.findIndex((itm: Item) => {return targetItemId === itm.id});
         if (targetIdx === -1) {
           items_copy.push(to_insert);
