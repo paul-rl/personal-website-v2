@@ -23,7 +23,7 @@ export default function Home() {
   const items = (() => {
     switch(activeTab) {
       case "projects": return data.projects;
-      case "albumclub": return data.albumClub ?? [];
+      case "albumclub": return /*data.albumClub ??*/ [];
       case "about": return data.hobbies;
       default: return [];
     }
